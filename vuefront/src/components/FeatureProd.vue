@@ -2,7 +2,7 @@
     <div>
         <div class="ftProdView">
 
-        <div class="card" style="width: 18rem;">
+        <div class="card " style="width: 18rem;">
 
             <div class="card-img-top">
                 <img src="https://i.postimg.cc/bJ28J55b/Sword-wallpaper-for-phone.jpg" style="width: 10rem; margin:0px 20%">
@@ -49,9 +49,13 @@
 .ftProdView{
     display: flex;
     justify-content: space-evenly;
-}
-.card-img-top{
+  }
+  .card-img-top{
     background: #000;
+    
+  }
+  .card{
+  box-shadow: 15px 25px 20px rgb(120, 113, 113);
 
 }
 

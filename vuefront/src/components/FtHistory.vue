@@ -10,10 +10,10 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">
+            <h5 class="card-title title">
               Sabre “Kilij” with Scabbard, 18th Century
             </h5>
-            <p class="card-text">
+            <p class="card-text textIncard">
               This is a wider card with supporting text below as a natural
               lead-in to additional content. This content is a little bit
               longer.
@@ -29,9 +29,9 @@
               quos ipsum earum rem qui doloremque maxime repellendus odio
               praesentium. Veritatis dolore sint in nisi aperiam repudiandae!
               Incidunt voluptates blanditiis corporis?
+              <PopOver/>
             </p>
 
-            <PopOver/>
 
 
           
@@ -64,5 +64,14 @@ export default{
 }
 .cardFtHistory:hover {
   transform: scale(1.02);
+}
+
+.textIncard{
+  margin-left: 20px;
+}
+.title{
+  text-decoration: underline;
+  text-align: center;
+  font-size: 25px;
 }
 </style>
