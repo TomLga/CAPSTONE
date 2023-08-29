@@ -1,0 +1,71 @@
+<template>
+    <div>
+        <nav class="navBarTop navbar navbar-expand-lg">
+            <div class="container-fluid">
+                
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div class="navCenter  collapse navbar-collapse" id="navbarTogglerDemo01">
+                <img src="https://i.postimg.cc/T1Ckqjx3/White-Neon-Green-Game-Logo-removebg-preview-1.png" style="width: 7rem;">
+                
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link"  href="/about">Products</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/about">History</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/about">Contact</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/about">Cart</a>
+                  </li>             
+
+                </ul>
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
+
+            </div>
+          </nav>
+
+    </div>
+</template>
+
+<script>
+    export default {
+        
+    }
+</script>
+
+<style>
+.navCenter{
+    margin-left: 490px;
+}
+.navBarTop{
+   background-image: url('https://i.postimg.cc/NjNLDHBp/298254-cut-sword-to-right-filter.jpg');
+   font-size: 20px;
+}
+
+.nav-item:hover{
+    text-decoration: underline;
+    text-decoration-color:rgb(147, 26, 26) ;
+
+}
+
+
+
+
+</style>
