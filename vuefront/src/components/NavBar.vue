@@ -1,6 +1,6 @@
 <template>
     <div>
-        <nav class="navBarTop navbar navbar-expand-lg">
+        <nav class="navBarTop navbar navbar-expand-lg fixed-top ">
             <div class="container-fluid">
                 
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,20 +54,29 @@
 .navCenter{
     margin-left: 490px;
 }
-.navBarTop{
-   background-image: url('https://i.postimg.cc/NjNLDHBp/298254-cut-sword-to-right-filter.jpg');
-   font-size: 20px;
+
+.navBarTop {
+  background-image: url('https://i.postimg.cc/NjNLDHBp/298254-cut-sword-to-right-filter.jpg');
+  font-size: 20px;
+  position: sticky; 
+  top: 0; 
+  width: 100%;
+  height: 80px;
+
 }
 
-.nav-item:hover{
-    text-decoration: underline;
-    text-decoration-color:rgb(147, 26, 26) ;
-
+.nav-item:hover {
+  text-decoration: underline;
+  text-decoration-color: rgb(147, 26, 26);
 }
-#btnSearch{
-  background:rgba(122, 113, 113, 0.397);
+
+#btnSearch {
+  background: rgba(122, 113, 113, 0.397);
   color: white;
 }
-
-
 </style>
+
+
+
+
+
