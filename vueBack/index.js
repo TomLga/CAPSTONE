@@ -1,10 +1,42 @@
 // backend w
+
 const express = require('express');
-const userRoute = require(''); // Update the import
-const errorHandling = require('')
 const path = require('path');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+
+const userRoute = require('./Controller/userRoute')
 const port = +process.env.PORT || 3020;
 
-// a port lister is needed
+const app = express()
+
+app.use(
+    express.static('./static'),
+    express.urlencoded({
+        extended:false,
+    }),
+    cookieParser(),
+    cors(),
+    userRoute.setRoute    
+);
+
+app.get('/', (req, res)=>{
+    res.sendFile(
+        path.resolve(__dirname, './static/HTML/index.html')
+    )
+})
+
+
+
+
+app.listen(port, ()=>{
+    console.log(`server is runnign on ${port}`);
+})
+
+
+
+
+// express.use is middleware
+
+
+
