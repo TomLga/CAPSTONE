@@ -58,10 +58,11 @@
 .navBarTop {
   background-image: url('https://i.postimg.cc/NjNLDHBp/298254-cut-sword-to-right-filter.jpg');
   font-size: 20px;
-  position: sticky; 
+  position: fixed; 
   top: 0; 
   width: 100%;
   height: 80px;
+  
 
 }
 
