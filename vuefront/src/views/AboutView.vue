@@ -26,6 +26,7 @@
               Each sword in our collection is a masterpiece from the elegantly curved katana that embodies the spirit of the samurai, to the mighty broadswords that once defended kingdoms.   <br> <br>           
               In a world driven by technology, Sword Alliance brings tradition to the fingertips of enthusiasts worldwide. Our e-commerce platform offers a seamless shopping experience, allowing you to explore the diverse selection of swords, each with its unique tale and features. With just a few clicks, you can own a piece of history.
              </p>
+
             </div>
           </div>
 
@@ -58,6 +59,7 @@ components:{
   margin:100px auto;
   height: 545px;  
   width: 95%;
+  box-shadow: 15px 15px 20px rgb(0, 0, 0);
 }
 h5{
   text-decoration: underline;
