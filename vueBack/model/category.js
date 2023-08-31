@@ -4,9 +4,9 @@ const db = require ('../config/dbConnection.js')
 class category {
     fetchEurope(req, res) {
         const query = `
-        SELECT prodID, prodName, qty, price, catergory, prodImg
+        SELECT prodID, prodName, qty, price, category, prodImg
         FROM Products
-        WHERE catergory = 'Europe'
+        WHERE category = 'Europe'
         `;
         
         db.query(query, (err, results) => {
@@ -19,9 +19,9 @@ class category {
     }
     fetchAfrica(req, res) {
         const query = `
-        SELECT prodID, prodName, qty, price, catergory, prodImg
+        SELECT prodID, prodName, qty, price, category, prodImg
         FROM Products
-        WHERE catergory = 'Africa'
+        WHERE category = 'Africa'
         `;
         
         db.query(query, (err, results) => {
@@ -34,9 +34,9 @@ class category {
     }
     fetchAsia(req, res) {
         const query = `
-        SELECT prodID, prodName, qty, price, catergory, prodImg
+        SELECT prodID, prodName, qty, price, category, prodImg
         FROM Products
-        WHERE catergory = 'Asia'
+        WHERE category = 'Asia'
         `;
         
         db.query(query, (err, results) => {
@@ -51,5 +51,5 @@ class category {
 
 
 module.exports=
-    category
+category
     
