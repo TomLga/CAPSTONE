@@ -8,7 +8,7 @@ class Users{
     fetchUsers(req, res){
         const query =`
         SELECT userID,firstName,lastName,
-        gender,emailAdd,userProfile
+        gender,emailAdd,userPass,userProfile
         FROM Users; `
         db.query(query,(err, results) => {
                 if(err) throw err
@@ -42,7 +42,7 @@ class Users{
         });
     }
     //---------------------------------
-    //login a user
+    
     login(req, res) {
         const {emailAdd, userPass} = req.body // pipeline
         // query
@@ -89,7 +89,7 @@ class Users{
             }
         })
     }
-    //register a user
+    // ADD USER
    async register(req,res){
         const data = req.body
         data.userPass = await hash(data.userPass,15)
@@ -110,7 +110,7 @@ class Users{
             })
         })
     }
-//update user
+
     updateUser(req,res){
         const data = req.body
         if(data.userPass){
@@ -131,7 +131,7 @@ class Users{
                 })
             })
     }
-    //delete a user
+ 
     deleteUser(req,res){
         const query =
          `
