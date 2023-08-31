@@ -1,5 +1,42 @@
+
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  
+    color: rgb(255, 255, 255);
 }
+body{
+    background-image: url('https://i.postimg.cc/L5pds8LK/3286968.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+h1,h3{
+    text-align: center;
+    text-decoration: underline;
+    font-family: cursive;
+    font-weight: 100;
+}
+
+table, th, td {
+    border: 1px solid;
+    padding: 5px;
+    background: #000;
+  
+ 
+  }
+ #user{
+    margin-top: 40px;
+ }
+#prod{
+    margin-top: 40px;
+}
+#prod>h2, #user>h2{
+   text-align: center;
+}
+  .userTable{
+    display: flex;
+    justify-content: center;
+
+  }
