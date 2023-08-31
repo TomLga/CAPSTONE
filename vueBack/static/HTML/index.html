@@ -4,9 +4,128 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Swords</title>
+    <link rel="stylesheet" href="../CSS/style.css">
 </head>
 <body>
-    <h1>WELOCOME TO THE WORLD OF SWORDS</h1>
+    <h3>WELCOME TO THE WORLD OF SWORDS</h3>
+    <h1>ROUTE DESCRIPTION</h1>
+    
+    <h3 style="font-style: italic; text-decoration: none;"> ~PORT 3020~</h3>
+
+    <div class="userTable">
+    
+     <div id="user">
+        <table>
+            <h2>USERS</h2>
+            <tr>
+                <th>HTTP METHOD</th>
+                <th>PATH</th>
+                <th>DESCRIPTION</th>
+            </tr>
+                <tr>
+                    <td>GET</td>
+                    <td>/users</td>
+                    <td>gets all users</td>
+                </tr>
+                <tr>
+                    <td>GET</td>
+                    <td>/user/:id</td>
+                    <td>gets one user</td>
+                </tr>
+                <tr>
+                    <td>POST</td>
+                    <td>/adduser</td>
+                    <td>add New User</td>
+                </tr>
+                <tr>
+                    <td>PATCH</td>
+                    <td>/user/:id</td>
+                    <td>update users</td>
+                </tr>
+                <!-- <tr>
+                    <td>PUT</td>
+                    <td>/user/:id</td>
+                    <td>update users</td>
+                </tr> -->
+                <tr>
+                    <td>DELETE</td>
+                    <td>/user/:id</td>
+                    <td>delete user by ID</td>
+                </tr>
+            </div>
+    
+    
+        </table>
+    
+    <div id="prod">
+     <table >
+       <h2>PRODUCTS</h2>
+           
+            <tr>
+                <th>HTTP METHOD</th>
+                <th>PATH</th>
+                <th>DESCRIPTION</th>
+            </tr>
+                <tr>
+                    <td>GET</td>
+                    <td>/Allproducts</td>
+                    <td>gets all products</td>
+                </tr>
+                <tr>
+                    <td>GET</td>
+                    <td>/product/:id</td>
+                    <td>gets one product by ID</td>
+                </tr>
+                <tr>
+                    <td>POST</td>
+                    <td>/Addproduct</td>
+                    <td>add New product</td>
+                </tr>
+                <tr>
+                    <td>PATCH</td>
+                    <td>/product/:id</td>
+                    <td>update product</td>
+                </tr>
+                <tr>
+                    <td>PUT</td>
+                    <td>/product/:id</td>
+                    <td>update product</td>
+                </tr>
+                <tr>
+                    <td>DELETE</td>
+                    <td>/product/:id</td>
+                    <td>delete product by ID</td>
+                </tr>
+        </table>
+    </div>
+
+
+    <table >
+        <h2>CATEGORY</h2>
+            
+             <tr>
+                 <th>HTTP METHOD</th>
+                 <th>PATH</th>
+                 <th>DESCRIPTION</th>
+             </tr>
+                 <tr>
+                     <td>GET</td>
+                     <td>/Europe</td>
+                     <td>gets all swords From Europe</td>
+                 </tr>
+                 <tr>
+                     <td>GET</td>
+                     <td>/Africa</td>
+                     <td>gets all swords From Africa</td>
+                 </tr>
+               
+                     <td>GET</td>
+                     <td>/Asia</td>
+                     <td>gets all swords from Asia</td>
+                 </tr>
+         </table>
+    
+    </div>
     
 </body>
 </html>
