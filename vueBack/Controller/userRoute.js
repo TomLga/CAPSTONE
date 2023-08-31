@@ -1,61 +1,55 @@
-// // settig routes 
-const express = require('express')
-const bodyParser = require('body-parser')
-const setRoute = express.Router()
-const {users, products } = require('../model')
-const app = express()
 
+const express = require('express');
+const bodyParser = require('body-parser');
+const routes = express.Router();
+const {createToken} = require('../Middleware/authentication')
+const { products } = require('../model/index');
+const { users } = require('../model/index');
 
-setRoute.get('/users', (req, res)=>{
-    users.fetchUsers(req, res)
-})
+// -----USER ROUTE--------
+routes.get('/users', (req, res) => {
+  users.fetchUsers(req, res);
+});
 
-setRoute.get('/user/:id', (req, res)=>{
-    users.fetchUser(req, res)
-})
+routes.get('/user/:id', (req, res) => {
+  users.fetchUser(req, res);
+});
+ 
+routes.post('/adduser', bodyParser.json(), (req, res) => {
+  users.register(req, res);
+});
 
-setRoute.post('/register', bodyParser.json(), (req, res)=>{
-    users.createUser(req, res)
-})                  
-setRoute.put('/user/:id', bodyParser.json(), (req, res)=>{
-    users.UpdatehUser(req, res)
-})                  
-setRoute.patch('/user/:id', bodyParser.json(), (req, res)=>{
-    users.UpdatehUser(req, res)
-})                  
-setRoute.delete('/user/:id', (req, res)=>{
-    users.delUser(req, res)
-})
+routes.patch('/user/:id', bodyParser.json(), (req, res) => {
+  users.updateUser(req, res);
+});
 
+routes.delete('/user/:id', (req, res) => {
+  users.deleteUser(req, res);
+});
 
-//-------------PRODUCT ROUTE ------
+// -----PRODUCT ROUTE-----
+routes.get('/Allproducts', (req, res) => {
+  products.fetchProducts(req, res);
+});
 
-setRoute.get('/products', (req, res)=>{
-    products.fetchProducts(req, res)
-})
+routes.get('/product/:id', (req, res) => {
+  products.fetchProduct(req, res);
+});
+ 
+routes.post('/Addproduct', bodyParser.json(), (req, res) => {
+  products.addProduct(req, res);
+});
 
-setRoute.get('/product/:id', (req, res)=>{
-    products.fetchProduct(req, res)
-})
+routes.delete('/product/:id', (req, res) => {
+  products.deleteProduct(req, res);
+});
 
-setRoute.post('/product', bodyParser.json(), (req, res)=>{
-    products.addProduct(req, res)
-})
-setRoute.put('/product/:id', bodyParser.json(), (req, res)=>{
-    products.updateProduct(req, res)
-})
-setRoute.patch('/product/:id', bodyParser.json(), (req, res)=>{
-    products.updateProduct(req, res)
-})
+routes.patch('/product/:id', bodyParser.json(), (req, res) => {
+  products.updateProduct(req, res);
+});
+ 
 
-setRoute.delete('/product/:id', (req,res)=>[
-    products.delProduct(req, res)
-])
-
-module.exports ={   
-     express,
-     setRoute
-
+module.exports = {
+  express,
+  routes,
 }
-
-// bodyparser is for post and put 

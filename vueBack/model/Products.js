@@ -1,81 +1,183 @@
 
-const myDB = require('../config/dbConnection')
+// const myDB = require('../config/dbConnection')
 
+// class Products{
+//     fetchProducts(req, res){
+//         const query = `
+//         SELECT prodID, prodName, qty, price, catergory, prodImg
+//         FROM Products
+//         `
+//         myDB.query(query,(err, results)=>{
+//             if(err) throw err
+//             res.json({
+//                 status: res.statusCode,
+//                 results:results
+//             })
+//         })
+//     }
+
+//     fetchProduct(req, res){
+//         const query=`
+//         SELECT prodID, prodName, qty, price, catergory, prodImg
+//         FROM Products
+//         WHERE prodID = ${req.params.id}
+//         `
+//         myDB.query(query, (err, results)=>{
+//             if(err) throw err
+//             res.json({
+//                 status: res.statusCode,
+//                 results:results
+//             })
+//         })
+//     }
+
+//     addProduct(req,res){
+//     const data = req.body() 
+//         const query =`
+//         INSERT INTO Products
+//         SET ?
+//         `
+//         myDB.query(query, [data],(err)=>{
+//             if(err) throw err
+//             res.json({
+//                 status:res.statusCode,
+//                 msg:"PRODUCT ADDED"
+
+//             })
+//         })
+
+//    }
+
+//    updateProduct(req, res){
+//     const data = req.body
+
+//     const query = `
+//     UPDATE Products
+//     SET ?
+//     WHERE prodID = ?
+//     `
+//     myDB.query(query,[data, res.params.id], (err)=>{
+//         if(err) throw err
+//         res.json({
+//             status: res.statusCode,
+//             msg: "PRODUCT UPDATED"
+//         })
+//     })
+//    }
+
+//    delProduct(req, res){
+//     const query = `
+//     DELETE FROM Products
+//     WHERE prodID = ${req.params.id}`
+
+//     myDB.query(query, (err)=>{
+//         if(err) throw err
+//         res.json({
+//             status:res.statusCode,
+//             msg:" PRODUCT DELETED"
+//         })
+//     })
+//    }
+
+// }
+
+// module.exports=Products
+
+
+
+const db = require ('../config/dbConnection.js')
 class Products{
-    fetchProducts(req, res){
-        const query = `
-        SELECT prodID, prodName, qty, price, catergory, prodImg
-        FROM Products
-        `
-        myDB.query(query,(err, results)=>{
-            if(err) throw err
-            res.json({
-                status: res.statusCode,
-                results:results
-            })
-        })
+ 
+    fetchProducts(req,res){
+            const query =`
+            SELECT prodID, prodName, qty, price, catergory, prodImg
+            FROM Products
+            `
+            db.query(query,
+                (err,results) => {
+                    if(err) throw err
+                    res.json({ 
+                        status:res.statusCode,
+                        results
+                    })
+                })
     }
 
     fetchProduct(req, res){
-        const query=`
+        const query = `
         SELECT prodID, prodName, qty, price, catergory, prodImg
         FROM Products
-        WHERE prodID = ${req.params.id}
+        WHERE prodID = ?;
         `
-        myDB.query(query, (err, results)=>{
-            if(err) throw err
+        db.query(query, [req.params.id], (err, result) => {
+            if (err) { 
+                console.error(err);
+                res.status(500).json({
+                    error: "An error occurred",
+                });
+            } else {
+                res.status(200).json({
+                    status: res.statusCode,
+                    result,
+                });
+            }
+        });
+    }
+    
+    addProduct(req, res) {
+        const data = req.body;
+        const query = `
+        INSERT INTO Products
+        SET ?;
+        `;
+    
+        db.query(query, [data], (err) => {
+            if (err) {
+                console.error("Error Adding New product:", err);
+                return res.status(500).json({
+                    status: 500,
+                    error: "error Adding new product"
+                });
+            }
+    
             res.json({
                 status: res.statusCode,
-                results:results
-            })
-        })
+                msg: "Product Added"
+            });
+        });
     }
-
-    addProduct(req,res){
-    const data = req.body() 
+    //update product
+    updateProduct(req, res){
+        const data = req.body
         const query =`
-        INSERT INTO Products
+        UPDATE Products
         SET ?
+        WHERE prodID = ?;
         `
-        myDB.query(query, [data],(err)=>{
+        db.query(query,[data, req.params.id],
+            (err) => {
+                if(err) throw err
+                res.json({
+                    status: res.statusCode,
+                    msg:"Product updated."
+                })
+            })
+    }
+    //delete product
+    deleteProduct(req,res){
+        const query =
+         `
+        DELETE FROM Products
+        WHERE prodID = ${req.params.id};
+        `
+        db.query(query, (err) => {
             if(err) throw err
             res.json({
-                status:res.statusCode,
-
-            })
+        status:res.statusCode,
+        msg:'Product deleted.'
         })
-
-   }
-
-   updateProduct(req, res){
-    const query = `
-    UPDATE Products
-    SET ?
-    WHERE prodID = ?
-    `
-    myDB.query(query,[req.body, res.params.id], (err)=>{
-        if(err) throw err
-        res.json({
-            status: res.statusCode,
-            msg: "PRODUCT UPDATED"
         })
-    })
-   }
-
-   delProduct(req, res){
-    const query = `
-    DELETE FROM Products
-    WHERE prodID = ${req.params.id}`
-
-    myDB.query(query, (err)=>{
-        if(err) throw err
-        res.json({
-            status:res.statusCode,
-            msg:" PRODUCT DELETED"
-        })
-    })
-   }
-
+    }
 }
 
-module.exports=Products
+module.exports  = Products;
