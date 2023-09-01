@@ -34,7 +34,7 @@
 <script>
 import FeatureProd from '../components/FeatureProd'
 import FtHistory from '../components/FtHistory'
-import SideAnimtion from '../components/SideAnimtion'
+import SideAnimtion from '../components/SideAnimtion.vue'
 export default{
   components:{
     FeatureProd,
