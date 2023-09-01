@@ -3,8 +3,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const routes = express.Router();
 const {createToken} = require('../Middleware/authentication')
+
 const { products } = require('../model/index');
 const { users } = require('../model/index');
+const { category} = require('../model/category')
 
 // -----USER ROUTE--------
 routes.get('/users', (req, res) => {
@@ -48,6 +50,13 @@ routes.patch('/product/:id', bodyParser.json(), (req, res) => {
   products.updateProduct(req, res);
 });
  
+
+// --------CATEGORY----
+
+routes.get('/Europe', (req, res)=>{
+  category.f
+
+})
 
 module.exports = {
   express,

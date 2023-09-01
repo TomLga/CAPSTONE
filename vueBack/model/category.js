@@ -1,7 +1,7 @@
 
 const db = require ('../config/dbConnection.js')
 
-class category {
+class Category {
     fetchEurope(req, res) {
         const query = `
         SELECT prodID, prodName, qty, price, category, prodImg
@@ -51,5 +51,5 @@ class category {
 
 
 module.exports=
-category
+Category
     
