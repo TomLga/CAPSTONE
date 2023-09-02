@@ -51,7 +51,7 @@ routes.patch('/product/:id', bodyParser.json(), (req, res) => {
 });
  
 
-// --------CATEGORY----
+// --------CATEGORY from home----
 
 routes.get('/Europe', (req, res)=>{
   category.fetchEurope(req, res)
