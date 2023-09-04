@@ -2,7 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const routes = express.Router();
-const {createToken} = require('../Middleware/authentication')
+// const {createToken} = require('../Middleware/authentication')
 
 const { products } = require('../model/index');
 const { users } = require('../model/index');

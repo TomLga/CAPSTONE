@@ -1,45 +1,6 @@
-// const express = require('express');
-// const setRoute = require('./Controller/userRoute')
-// const path = require('path');
-// const cors = require('cors');
-// const cookieParser = require('cookie-parser');
-
-// const { error } = require('./Middleware/ErrorHandle');
-// const port = +process.env.PORT || 3020;
-
-// const app = express()
-
-// app.use(
-//     express.static('./static'),
-//     express.urlencoded({
-//         extended:false,
-//     }),
-//     cookieParser(),
-//     cors(),
-//     setRoute
-// );
-// // ERROR HANDINLING 
-// app.use(error)
-
-// app.get('/', (req, res)=>{
-//     res.sendFile(
-//         path.resolve(__dirname, './static/HTML/index.html')
-//     )
-// })
-
-// app.listen(port, ()=>{
-//     console.log(`server is runnign on ${port}`);
-// })
-
-
-
-
-// // express.use is middleware
-
-
 
 require('dotenv').config()
-const { express, routes} = require('./controller/userRoute')
+const { express, routes} = require('./Controller/userRoute')
 const path = require('path');
 const app = express();
 const cookieParser = require("cookie-parser");
@@ -68,21 +29,21 @@ app.use((req, res, next) => {
 })
 
 app.use(
-  cors(), // Use cors middleware first
+  cors(), 
   express.static('./static'),
   express.urlencoded({
       extended: false
   }),
   cookieParser(),
   (err, req, res, next) => {
-    console.error(err); //  error to the console
+    console.error(err);
     next(err); // Pass the error to the next middleware
   },
   routes
 );
 app.use(routes);
 
-// Error handling middleware
+// Error handle middleware
 app.use((err, req, res, next) => {
   console.error(err); 
   res.status(500).json({ error: 'Internal server error' });
@@ -90,9 +51,9 @@ app.use((err, req, res, next) => {
 
 
 
-// Handling all errors
+
 app.use(errorHandling);
-// Server
+
 
 routes.get("^/$|/poin", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./static/html/index.html"));
