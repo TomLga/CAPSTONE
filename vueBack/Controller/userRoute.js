@@ -52,6 +52,7 @@ routes.patch('/product/:id', bodyParser.json(), (req, res) => {
  
 
 // --------CATEGORY from home----
+// going to merge with backend
 
 routes.get('/Europe', (req, res)=>{
   category.fetchEurope(req, res)
@@ -62,7 +63,7 @@ routes.get('/Asia', (req, res)=>{
 })
 
 routes.get('/Africa', (req, res)=>{
-  category.fetchAfrica(req, res)
+  category.fetchAfrica(req, res) 
 })
 
 module.exports = {
