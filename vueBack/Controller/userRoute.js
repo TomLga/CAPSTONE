@@ -6,7 +6,7 @@ const {createToken} = require('../Middleware/authentication')
 
 const { products } = require('../model/index');
 const { users } = require('../model/index');
-const { category} = require('../model/category')
+const { category} = require('../model/index')
 
 // -----USER ROUTE--------
 routes.get('/users', (req, res) => {
@@ -51,11 +51,19 @@ routes.patch('/product/:id', bodyParser.json(), (req, res) => {
 });
  
 
-// --------CATEGORY----
+// --------CATEGORY from home----
+// going to merge with backend
 
 routes.get('/Europe', (req, res)=>{
-  category.f
+  category.fetchEurope(req, res)
+})
 
+routes.get('/Asia', (req, res)=>{
+  category.fetchAsia(req, res)
+})
+
+routes.get('/Africa', (req, res)=>{
+  category.fetchAfrica(req, res) 
 })
 
 module.exports = {
