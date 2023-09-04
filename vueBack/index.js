@@ -56,7 +56,7 @@ app.use(errorHandling);
 
 
 routes.get("^/$|/poin", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./static/html/index.html"));
+  res.sendFile(path.resolve(__dirname, "./static/HTML/index.html"));
 });
 
 app.listen(port, () => {
