@@ -1,42 +1,51 @@
 <template>
+  <div>
     <div>
-        <h1 id="textHistory">HISTORY</h1>
-        <div class="card mb-3 eduCard" >
-            <div class="row g-0 ">
-              <div class="col-md-4 imgCon">
-                <img id="pic" src="https://i.postimg.cc/bJ28J55b/Sword-wallpaper-for-phone.jpg" class="card-img-top img-fluid"  >
-
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                </div>
-              </div>
-            </div>
-          </div>
-
+      <h1 id="textHistory">HISTORY</h1>
     </div>
+    <div class="card mb-3 wholeHistory" v-for="item in products" :key="item.prodID">
+      <div class="row">
+        <div class="col-md-4" id="imgCenter">
+  
+          <img :src="item.prodImg" class="img-fluid rounded-start img"
+           style=" width:12rem; height:12rem;">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ item.prodName }}</h5>
+            <p class="card-text">{{ item.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 
+<script>
+export default {
+  computed: {
+    products() {
+      return this.$store.state.products;
+    },
+  },
+  mounted() {
+    this.$store.dispatch('fetchAllProducts');
+  },
+};
+</script>
 
 <style>
-#textHistory{
-    padding-top: 100px;
+#textHistory {
+  padding-top: 100px;
 }
-.eduCard{
-    width: 88%;
-    margin: auto;
+.wholeHistory{
+  width: 80%;
+  margin: auto;
 }
-.imgCon,#pic{
-    background: #b4a2a2;
-    width: 7rem;
-}
+#imgCenter{
 
-#pic:hover{
-    transform: scale(1.6);
+width: 13rem;
 }
 
 </style>
