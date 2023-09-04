@@ -9,28 +9,27 @@
       <div class="col-md-4" v-for="item in products" :key="item.prodID">
 
         <div class="card wholeCard">
-          <img :src="item.prodImg" class="card-img-top img-fluid"  style=" width:22rem; height:22rem; margin:auto;">
+          <img :src="item.prodImg" class="card-img-top img-fluid"  style=" width:22rem; height:22rem; margin:10px auto;">
         
          <!-- <img src="@/assets/images/SwordWallpaperForPhone.jpg"
             class="card-img-top img-fluid"
             style="width: 10rem; margin:auto;"/> -->
 
           <div class="card-body prodCards">
-            <h5 class="card-title">{{ item.prodName }}</h5>
-            <p class="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </p>
+            <h2 class="card-title">{{ item.prodName }}</h2>
+            <!-- <p class="card-text" style="height: 15rem;">
+             {{ item.description }}
+            </p> -->
           </div>
 
           <div id="btncartmore">
-            <a href="#" class="btn btn-outline-primary">Add to Cart</a>
+           
             <a href="#" class="btn btn-outline-primary">View More</a>
+            <router-link to="/viewMore"  class="btn btn-outline-primary">CART</router-link>
           </div>
 
           <div class="card-footer">
-            <small class="text-body-secondary">{{ item.price }}</small>
+            <p class="priceDiv"> R {{ item.price }}</p>
           </div>
         </div>
       </div>
@@ -56,22 +55,32 @@ export default {
   width: 90%;
   margin: auto;
   display: flex;
-
-
 }
-
 .wholeCard {
   background: #111010c5;
   color: rgb(255, 254, 254);
-  margin: 10px; /* Adjust the margin between cards */
+  margin: 20px; /* Adjust the margin between cards */
 }
-
-.btnCart {
-  width: 100px;
-}
-
 #btncartmore {
   display: flex;
   justify-content: space-evenly;
 }
+.priceDiv{
+  font-size: 20px;
+}
+
+/*hover effects*/
+ 
+img {
+  transition: transform 1s ease-in-out, border 1s ease-in-out;
+  
+}
+
+img:hover {
+  transform: scale(1.2);
+  border: 7px solid rgb(0, 0, 0);
+  border-radius: 20px;
+}
+
+
 </style>

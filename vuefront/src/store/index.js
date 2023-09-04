@@ -31,7 +31,6 @@ export default createStore({
     setProduct(state, product){
       state.product = product
     },
-
       setMsg(state, msg) {
         state.msg = msg
       }
