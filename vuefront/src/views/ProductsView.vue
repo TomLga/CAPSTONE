@@ -1,8 +1,6 @@
 <template>
     <div>
 <div class="mainDiv">
-
-        
         <h1 id="prodText">PRODUCTS</h1>
         <ProdCard/>
 </div>

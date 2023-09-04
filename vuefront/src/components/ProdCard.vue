@@ -2,10 +2,12 @@
   <div>
     <h1>from prod comp</h1>
   </div>
+  <SpinnerComp/>
+
 
   <div class="card-group prodCardBody">
 
-    <div class="row">
+    <div class="row" v-if="products">
       <div class="col-md-4" v-for="item in products" :key="item.prodID">
 
         <div class="card wholeCard">
@@ -34,11 +36,24 @@
         </div>
       </div>
     </div>
+    <div v-else >
+      <SpinnerComp/>
+  </div>
   </div>
 </template>
 
 <script>
+import SpinnerComp from '../components/SpinnerComp.vue'
 export default {
+components:{
+  SpinnerComp
+  
+},
+
+
+
+
+
   computed: {
     products() {
       return this.$store.state.products;
