@@ -6,7 +6,8 @@ const routes = express.Router();
 
 const { products } = require('../model/index');
 const { users } = require('../model/index');
-const { category} = require('../model/index')
+const { category} = require('../model/index');
+const { history } = require('../model/index')
 
 // -----USER ROUTE--------
 routes.get('/users', (req, res) => {
@@ -65,6 +66,15 @@ routes.get('/Asia', (req, res)=>{
 routes.get('/Africa', (req, res)=>{
   category.fetchAfrica(req, res) 
 })
+
+
+
+// -----HISTPRY PAGE=-----
+
+routes.get('/History', (req, res)=>{
+  history.fetchHistory(req, res)
+})
+
 
 module.exports = {
   express,
