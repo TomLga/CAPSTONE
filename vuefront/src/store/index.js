@@ -52,14 +52,16 @@ export default createStore({
       }
     },
 
-    async fetchHistory(context){
-      try{
-        const {data} = await axios.get(`${fetchApi}History`)
+    async fetchHistory(context) {
+      try {
+        const { data } = await axios.get(`${fetchApi}History`)
         context.commit("setHistory", data.results)
-      } catch(e){
-        context.commit("setMsg", "an Error occ")
+      } catch (e) {
+        console.error("Error fetching history:", e)
+        context.commit("setMsg", "An error occurred while fetching history.")
       }
     }
+    
   },
 
 

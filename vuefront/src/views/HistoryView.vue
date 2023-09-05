@@ -3,17 +3,17 @@
     <div>
       <h1 id="textHistory">HISTORY</h1>
     </div>
-    <div class="card mb-3 wholeHistory" v-for="item in products" :key="item.prodID">
+    <div class="card mb-3 wholeHistory" v-for="item in history" :key="item.iID">
       <div class="row">
         <div class="col-md-4" id="imgCenter">
   
-          <img :src="item.prodImg" class="img-fluid rounded-start img"
+          <img :src="item.iImg" class="img-fluid rounded-start img"
            style=" width:12rem; height:12rem;">
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">{{ item.prodName }}</h5>
-            <p class="card-text">{{ item.description }}</p>
+            <h5 class="card-title">{{ item.iName }}</h5>
+            <p class="card-text">{{ item.iDescription }}</p>
           </div>
         </div>
       </div>
@@ -27,11 +27,11 @@
 export default {
   computed: {
     products() {
-      return this.$store.state.products;
+      return this.$store.state.history;
     },
   },
   mounted() {
-    this.$store.dispatch('fetchAllProducts');
+    this.$store.dispatch('fetchHistory');
   },
 };
 </script>
