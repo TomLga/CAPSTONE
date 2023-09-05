@@ -1,5 +1,6 @@
 <template>
     <div class="footer">
+        <router-link id="linkAdmin" to="/admin">Admin</router-link>
 
         <div class="info">
             <p> Copyright &copy; by LOGAN THOMAS </p>
@@ -17,9 +18,10 @@
             <p>Contact me: <br>
             <span>+27 067 627 3770</span>
         </p>
-
-
         </div>
+    
+         
+    
 
     </div>
 </template>
@@ -31,7 +33,7 @@
     background-image: url('https://i.postimg.cc/NjNLDHBp/298254-cut-sword-to-right-filter.jpg');
     font-size: 20px;
     color: white;
-    height: 125px;
+    height: 135px;
 }
 .info{
     text-align: center;
@@ -51,6 +53,12 @@ span{
     text-align: end;
     margin-top: -90px;
     margin-right: 20px;
+
+}
+#linkAdmin{
+    color: black;
+    text-decoration: none;
+    float: right;
 
 }
 </style>
