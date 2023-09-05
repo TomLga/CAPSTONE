@@ -20,6 +20,7 @@
     </div>
   </div>
 </template>
+<!-- get imgs from goodle drive  -->
 
 
 <script>
