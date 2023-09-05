@@ -11,12 +11,13 @@ export default createStore({
     products:null,
     product: null,
 
+    history:null,
+
     token:null,
     msg:null
     // category and spinner 
   },
-  getters: {
-  },
+  
 
   mutations: {
     setUsers(state, users){
@@ -31,6 +32,9 @@ export default createStore({
     setProduct(state, product){
       state.product = product
     },
+    setHistory(state, history){
+      state.history = history
+    },
       setMsg(state, msg) {
         state.msg = msg
       }
@@ -43,6 +47,15 @@ export default createStore({
       try{
         const {data} = await axios.get(`${fetchApi}Allproducts`)
         context.commit("setProducts", data.results)
+      } catch(e){
+        context.commit("setMsg", "an Error occ")
+      }
+    },
+
+    async fetchHistory(context){
+      try{
+        const {data} = await axios.get(`${fetchApi}History`)
+        context.commit("setHistory", data.results)
       } catch(e){
         context.commit("setMsg", "an Error occ")
       }
