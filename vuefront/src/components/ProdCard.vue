@@ -1,54 +1,61 @@
+
 <template>
-  <div>
-    <h1>from prod comp</h1>
-  </div>
 
-
+  <form class="d-flex searchTab" role="search" @submit.prevent="searchProducts">
+    <input v-model="searchQuery" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
 
   <div class="card-group prodCardBody">
-
-    <div class="row" v-if="products">
-      <div class="col-md-4" v-for="item in products" :key="item.prodID">
-
+    <div class="row" v-if="filteredProducts.length > 0">
+      <div class="col-md-4" v-for="item in filteredProducts" :key="item.prodID">
+        <!-- Your card content here -->
         <div class="card wholeCard">
-          <img :src="item.prodImg" class="card-img-top img-fluid"  style=" width:22rem; height:22rem; margin:10px auto;">
-
-
+          <img :src="item.prodImg" class="card-img-top img-fluid" style="width: 22rem; height: 22rem; margin: 10px auto;">
           <div class="card-body prodCards">
             <h2 class="card-title">{{ item.prodName }}</h2>
-            <!-- <p class="card-text" style="height: 15rem;">
-             {{ item.description }}
-            </p> -->
           </div>
-
           <div id="btncartmore">
-           
             <a href="#" class="btn btn-outline-primary">View More</a>
-            <router-link to="/viewMore"  class="btn btn-outline-primary">CART</router-link>
+            <router-link to="/viewMore" class="btn btn-outline-primary">CART</router-link>
           </div>
-
           <div class="card-footer">
             <p class="priceDiv"> R {{ item.price }}</p>
           </div>
         </div>
       </div>
     </div>
-    <div v-else >
-      <SpinnerComp/>
-  </div>
+    <div v-else>
+      <SpinnerComp />
+    </div>
   </div>
 </template>
 
 <script>
-import SpinnerComp from '../components/SpinnerComp.vue'
+import SpinnerComp from '../components/SpinnerComp.vue';
+
 export default {
-components:{
-  SpinnerComp
-  
-},
+  components: {
+    SpinnerComp,
+  },
+  data() {
+    return {
+      searchQuery: '',
+    };
+  },
   computed: {
     products() {
-      return this.$store.state.products;
+      return this.$store.state.products || [];
+    },
+    filteredProducts() {
+      const searchQuery = this.searchQuery.toLowerCase();
+      return this.products.filter(item =>
+        item.prodName.toLowerCase().includes(searchQuery)
+      );
+    },
+  },
+  methods: {
+    searchProducts() {
     },
   },
   mounted() {
@@ -56,6 +63,8 @@ components:{
   },
 };
 </script>
+
+
 
 <style scoped>
 .prodCardBody {
@@ -90,4 +99,15 @@ img:hover {
 }
 
 
+.searchTab{
+  width: 50%;
+  margin: auto;
+  margin-bottom: 20px;
+
+
+}
+.searchTab> input{
+  background: #706767;
+  color: white;
+}
 </style>
