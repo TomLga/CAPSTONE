@@ -2,13 +2,22 @@
   <div>
     <div>
       <h1 id="textHistory">HISTORY</h1>
+
+      <form class="d-flex searchTab" role="search" @submit.prevent="searchHistory">
+        <input v-model="searchQuery" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+
     </div>
-    <div class="card mb-3 wholeHistory" v-for="item in history" :key="item.iID">
+
+
+
+    <div v-for="item in filteredHistory" :key="item.iID">
+    <div class="card mb-3 wholeHistory" v-for="item in filteredHistory" :key="item.iID">
       <div class="row">
         <div class="col-md-4" id="imgCenter">
   
-          <img :src="item.iImg" class="img-fluid rounded-start img"
-           style=" width:12rem; height:12rem;">
+          <img :src="item.iImg" class="img-fluid rounded-start img" style="width: 12rem; height: 12rem;">
         </div>
         <div class="col-md-8">
           <div class="card-body">
@@ -19,15 +28,37 @@
       </div>
     </div>
   </div>
-</template>
-<!-- get imgs from goodle drive  -->
+  
+</div>
 
+</template>
 
 <script>
 export default {
+  data() {
+    return {
+      searchQuery: '',
+    };
+  },
   computed: {
-    products() {
+    history() {
       return this.$store.state.history;
+    },
+    
+    filteredHistory() {
+  if (this.history) {
+    return this.history.filter(item =>
+      item.iName.toLowerCase().includes(this.searchQuery.toLowerCase())
+    );
+  } else {
+    return [];
+  }
+},
+
+  },
+  methods: {
+    searchHistory() {
+  
     },
   },
   mounted() {
@@ -35,6 +66,7 @@ export default {
   },
 };
 </script>
+
 
 <style>
 #textHistory {
@@ -49,4 +81,49 @@ export default {
 width: 13rem;
 }
 
+.searchTab{
+  width: 50%;
+  margin: auto;
+  margin-bottom: 20px;
+
+
+}
+.searchTab> input{
+  background: #706767;
+  color: white;
+}
 </style>
+
+
+<!-- <template>
+  <div>
+    <input v-model="searchQuery" type="text" placeholder="Search...">
+    <ul>
+      <li v-for="item in filteredItems" :key="item.id">{{ item.name }}</li>
+    </ul>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      items: [
+        { id: 1, name: 'Item 1' },
+        { id: 2, name: 'Item 2' },
+        { id: 3, name: 'Item 3' },
+        // Add more items as needed
+      ],
+      searchQuery: '',
+    };
+  },
+  computed: {
+    filteredItems() {
+      return this.items.filter(item =>
+        item.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+    },
+  },
+};
+</script>
+ -->
