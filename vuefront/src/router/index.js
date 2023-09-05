@@ -40,6 +40,14 @@ const routes = [
   {
     path: '/viewMore',
     component: () => import('../components/SingleView.vue')
+  },
+  {
+    path: '/admin',
+    component:()=> import('../views/AdminView.vue')
+  },
+  {
+    path: '/users',
+    component:()=> import('../views/UsersView.vue')
   }
 ]
 

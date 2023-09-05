@@ -11,13 +11,10 @@
             </form>
         </div>    
        <div class="spaceGap">
-
        </div>
         <!-- <BUtton>
             <router-link to="/signup">signUp</router-link>
         </BUtton> -->
-      
-
     </div>
 </template>
 
@@ -32,15 +29,8 @@ export default{
     data(){
         return {
             payload: {
-                
-            //  userID: " ",
-            // firstName:" ",
-            // lastName: " ",
-            // gender: "",
             emailAdd: "",
             userPass:" "
-            // userProfile: " "
-
             }
         }
     },
