@@ -7,12 +7,10 @@
         <input v-model="searchQuery" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
-
     </div>
 
 
-
-    <div v-for="item in filteredHistory" :key="item.iID">
+    <div v-if="history" v-for="item in filteredHistory" :key="item.iID">
     <div class="card mb-3 wholeHistory" v-for="item in filteredHistory" :key="item.iID">
       <div class="row">
         <div class="col-md-4" id="imgCenter">
@@ -28,13 +26,22 @@
       </div>
     </div>
   </div>
+  <div v-else >
+    <SpinnerComp/>
+</div>
   
 </div>
 
 </template>
 
 <script>
+import SpinnerComp from '../components/SpinnerComp.vue'
+
+
 export default {
+  components:{
+  SpinnerComp
+},
   data() {
     return {
       searchQuery: '',
