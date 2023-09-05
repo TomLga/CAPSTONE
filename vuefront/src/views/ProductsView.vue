@@ -10,7 +10,6 @@
 <script>
 import ProdCard from '@/components/ProdCard.vue'
 
-
     export default {
         components:{
             ProdCard
