@@ -4,9 +4,9 @@
 
         <div class="login-Container">
             <h2>WELCOME BACK, </h2>
-            <form>
-                <input type="text" placeholder="Name">
-                <input type="text" placeholder="Password">
+            <form @submit.prevent="login">
+                <input v-model="emailAdd" type="email" placeholder="EMAIL">
+                <input v-model="userPass" type="password" placeholder="Password" min-length="8" >
               <button type="submit">Login</button>
             </form>
         </div>    
@@ -28,7 +28,33 @@ import SignupComp from '@/components/SignupComp.vue';
 export default{
     components:{
         SignupComp
+    },
+    data(){
+        return {
+            payload: {
+                
+            //  userID: " ",
+            // firstName:" ",
+            // lastName: " ",
+            // gender: "",
+            emailAdd: "",
+            userPass:" "
+            // userProfile: " "
+
+            }
+        }
+    },
+    computed:{
+        user(){
+            return this.$store.state.statename
+        }
+    },
+    methods:{
+        login(){
+
+        }
     }
+    
 }
 
 
