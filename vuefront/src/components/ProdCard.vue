@@ -2,7 +2,7 @@
   <div>
     <h1>from prod comp</h1>
   </div>
-  <SpinnerComp/>
+
 
 
   <div class="card-group prodCardBody">
@@ -12,10 +12,7 @@
 
         <div class="card wholeCard">
           <img :src="item.prodImg" class="card-img-top img-fluid"  style=" width:22rem; height:22rem; margin:10px auto;">
-        
-         <!-- <img src="@/assets/images/SwordWallpaperForPhone.jpg"
-            class="card-img-top img-fluid"
-            style="width: 10rem; margin:auto;"/> -->
+
 
           <div class="card-body prodCards">
             <h2 class="card-title">{{ item.prodName }}</h2>
@@ -49,11 +46,6 @@ components:{
   SpinnerComp
   
 },
-
-
-
-
-
   computed: {
     products() {
       return this.$store.state.products;

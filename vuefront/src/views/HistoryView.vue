@@ -3,9 +3,10 @@
     <div>
       <h1 id="textHistory">HISTORY</h1>
     </div>
-    <div class="card mb-3 wholeHistory" v-for="item in products" :key="item.prodID">
-      <div class="row">
-        <div class="col-md-4" id="imgCenter">
+
+    <div class="card mb-3 wholeHistory">
+      <div class="row" v-if="products">
+        <div class="col-md-4" id="imgCenter"  v-for="item in products" :key="item.prodID">
   
           <img :src="item.prodImg" class="img-fluid rounded-start img"
            style=" width:12rem; height:12rem;">
@@ -17,14 +18,24 @@
           </div>
         </div>
       </div>
+      <div v-else >
+        <SpinnerComp/>
+    </div>
     </div>
   </div>
 </template>
-<!-- get imgs from goodle drive  -->
+<!-- get imgs from goodle drive  
+
+  ,-->
 
 
 <script>
+import SpinnerComp from '../components/SpinnerComp.vue'
 export default {
+  components:{
+SpinnerComp
+  
+},
   computed: {
     products() {
       return this.$store.state.products;

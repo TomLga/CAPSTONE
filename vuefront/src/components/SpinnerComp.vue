@@ -18,7 +18,7 @@
     
 }
 .cont{
-    background: #c96262;
+    background: #14e642;
     margin: auto;
 }
 </style>
