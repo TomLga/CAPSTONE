@@ -15,10 +15,14 @@
           <div class="card-body prodCards">
             <h2 class="card-title">{{ item.prodName }}</h2>
           </div>
+
           <div id="btncartmore">
-            <a href="#" class="btn btn-outline-primary">View More</a>
+    <button @click="viewItem(item.prodID)" >VIEW MORE</button>
+
             <router-link to="/viewMore" class="btn btn-outline-primary">CART</router-link>
           </div>
+
+
           <div class="card-footer">
             <p class="priceDiv"> R {{ item.price }}</p>
           </div>
@@ -57,6 +61,14 @@ export default {
   methods: {
     searchProducts() {
     },
+    viewItem(prodID){
+      const cProd = this.products.find(
+        (item)=>
+        item.prodID === prodID
+      );
+      this.$store.commit("setSignalView", cProd);
+      this.$router.push({name: "prodSingView", params:{ prodID:prodID}})
+    }
   },
   mounted() {
     this.$store.dispatch('fetchAllProducts');

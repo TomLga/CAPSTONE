@@ -5,7 +5,7 @@
             <div class="card-group prodCardBody">
           
               <div class="row">
-                <div class="col-md-4" v-for="item in products" :key="item.prodID">
+                <div class="col-md-4">
           
                   <div class="card wholeCard">
                     <img :src="item.prodImg" class="card-img-top img-fluid"  style=" width:22rem; height:22rem; margin:10px auto;">
@@ -34,13 +34,10 @@
 <script>
 export default {
   computed: {
-    products() {
-      return this.$store.state.products;
+    item() {
+      return this.$store.state.signalView;
     },
-  },
-  mounted() {
-    this.$store.dispatch('fetchAllProducts');
-  },
+  }
 };
 </script>
 
