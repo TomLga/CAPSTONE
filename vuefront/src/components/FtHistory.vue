@@ -29,7 +29,10 @@
               quos ipsum earum rem qui doloremque maxime repellendus odio
               praesentium. Veritatis dolore sint in nisi aperiam repudiandae!
               Incidunt voluptates blanditiis corporis?
-              <PopOver/>
+              <!-- <PopOver/> -->
+              <Button id="hisbtn">
+              <a class="atag" href="/history"> SEE MORE ON HISTORY</a>
+            </Button>
             </p>
 
 
@@ -73,5 +76,18 @@ export default{
   text-decoration: underline;
   text-align: center;
   font-size: 25px;
+}
+
+#hisbtn{
+  display: flex;
+  margin-top: 20px;
+  box-shadow: 5px 7px 2px;
+
+}
+.atag{
+color: black;
+text-decoration: none;
+margin: 10px;
+
 }
 </style>
