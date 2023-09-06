@@ -10,6 +10,7 @@ export default createStore({
 
     products:null,
     product: null,
+    signalView:null,
 
     history:null,
 
@@ -26,12 +27,18 @@ export default createStore({
     setUser(state, user){
       state.user = user
     },
+
     setProducts(state, products){
       state.products = products
     },
     setProduct(state, product){
       state.product = product
     },
+    setSignalView(state, signalView){
+      state.signalView =signalView
+    },
+
+
     setHistory(state, history){
       state.history = history
     },
