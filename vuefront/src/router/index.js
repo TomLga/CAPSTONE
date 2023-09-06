@@ -44,6 +44,7 @@ const routes = [
   },
   {
     path: '/users',
+    name: 'users',
     component:()=> import('../views/UsersView.vue')
   },
   {

@@ -1,10 +1,7 @@
 <template>
     <div>
         <div>
-
         <h1 id="usersTop">USERS page</h1>
-        <a href="../views/AdminView.vue">PRODUCTS VIEW</a>
- 
        </div>
 
     </div>
@@ -14,7 +11,7 @@
 
 <style>
 #usersTop{
-    padding-top: 200px;
+    padding-top: 100px;
 }
 
 </style>

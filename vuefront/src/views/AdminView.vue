@@ -7,7 +7,11 @@
           </form>
 
         <h5>Products</h5>
-      <a href="../views/UsersView.vue">USERS</a>
+
+        
+       <button><a class="nav-link" href="/users">USERS ADMIN</a></button> 
+
+     <AddProduct/> 
         
 
         <table class="table">
@@ -37,20 +41,19 @@
               </tr>
             </tbody>
           </table>
-
-        
-
     </div>
 </template>
 
 
 <script>
 import SpinnerComp from '../components/SpinnerComp.vue';
+import AddProduct from '../components/AddProduct.vue'
 
 
 export default {
   components: {
     SpinnerComp,
+    AddProduct
 
   },
   data() {
