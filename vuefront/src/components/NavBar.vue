@@ -33,6 +33,9 @@
                   <li class="nav-item">
                     <a class="nav-link" href="/resgister">Register</a>
                   </li>             
+                  <li class="nav-item">
+                    <a class="nav-link" href="/cart">cart</a>
+                  </li>             
 
                 </ul>
                 <form class="d-flex" role="search">
