@@ -17,7 +17,7 @@
           </div>
 
           <div id="btncartmore">
-    <button @click="viewItem(item.prodID)" >VIEW MORE</button>
+    <button class="btn btn-outline-primary" @click="viewItem(item.prodID)" >VIEW MORE</button>
 
             <router-link to="/viewMore" class="btn btn-outline-primary">CART</router-link>
           </div>

@@ -17,7 +17,7 @@
   <FeatureProd/>
 
  <div class="shopNowbtn">
-      <button style="margin:70px 0px;">SEE ALL PRODUCTS</button>
+      <button style="margin:70px 0px;"> <a style="text-decoration: none; color:black"  href="/product">VIEW ALL PRODUCTS</a></button>
     </div>
 
   <h1>HISTORY LESSON OF THE DAY</h1>
