@@ -12,9 +12,9 @@
         </div>    
        <div class="spaceGap">
        </div>
-        <!-- <BUtton>
+        <BUtton>
             <router-link to="/signup">signUp</router-link>
-        </BUtton> -->
+        </BUtton>
     </div>
 </template>
 
@@ -46,7 +46,6 @@ export default{
     }
     
 }
-
 
 </script>
 

@@ -30,7 +30,7 @@ const routes = [
   {
     path: '/resgister',
   
-    component: () => import('../views/RegisterView.vue')
+    component: () => import('../views/LoginView.vue')
   },
 
   {
