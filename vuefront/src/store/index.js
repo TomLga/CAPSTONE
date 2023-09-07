@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
+import sweet from 'sweetalert'
 const fetchApi = "https://capstoneswordall.onrender.com/"
 
 
@@ -68,18 +69,6 @@ export default createStore({
         context.commit("setMsg", "An error occurred while fetching history.")
       }
     },
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     
