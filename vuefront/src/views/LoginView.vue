@@ -1,12 +1,12 @@
 <template>
     <div class="bodyy">
-        <h1 id="topText">WELCOME ME LORD</h1>
+        <h1 id="topText">WELCOME BACK</h1>
 
         <div class="login-Container">
             <h2>WELCOME BACK, </h2>
             <form @submit.prevent="login">
-                <input v-model="emailAdd" type="email" placeholder="EMAIL">
-                <input v-model="userPass" type="password" placeholder="Password" min-length="8" >
+                <input v-model="payload.emailAdd" type="email" placeholder="EMAIL" required>
+                <input v-model="payload.userPass" type="password" placeholder="Password" required >
               <button type="submit">Login</button>
             </form>
         </div>    
@@ -36,13 +36,17 @@ export default{
     },
     computed:{
         user(){
-            return this.$store.state.statename
+            return this.$store.state.user
         }
     },
     methods:{
         login(){
+            this.$store.dispatch("login", this.payload)
 
         }
+    },
+    beforeCreate(){
+        this.$store.dispatch("fetchUsers")
     }
     
 }
