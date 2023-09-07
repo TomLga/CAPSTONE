@@ -4,15 +4,14 @@
 
         <div class="login-Container">
             <h2>WELCOME BACK, </h2>
-            <form @submit.prevent="login">
-                <input v-model="payload.emailAdd" type="email" placeholder="EMAIL" required>
-                <input v-model="payload.userPass" type="password" placeholder="Password" required>
+            <form action="action_page.php" @submit.prevent="login">
+                <input v-model="payload.emailAdd" type="password" placeholder="emailAdd" required>
+                <input v-model="payload.userPass" type="password" placeholder="userPass" required>
 
               <button type="submit">Login</button>
             </form>
         </div>    
-       <div class="spaceGap">
-       </div>
+       
         <BUtton>
             <router-link to="/signup">signUp</router-link>
         </BUtton>
@@ -31,7 +30,7 @@ export default{
         return {
             payload: {
             emailAdd: "",
-            userPass:" "
+            userPass:""
             }
         }
     },
@@ -49,7 +48,7 @@ export default{
     beforeCreate(){
         this.$store.dispatch("fetchUsers")
     }
-    
+
 }
 
 </script>
