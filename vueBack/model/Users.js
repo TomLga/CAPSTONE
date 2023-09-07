@@ -66,7 +66,7 @@ class Users{
                     result[0].userPass,
                     (cErr, cResult)=>{
                         if(cErr) throw cErr
-                        // Create a token
+                        // Creating the token
                         const token =
                         createToken({
                             emailAdd,

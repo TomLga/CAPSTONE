@@ -22,6 +22,11 @@ routes.post('/adduser', bodyParser.json(), (req, res) => {
   users.register(req, res);
 });
 
+routes.post('/login', bodyParser.json(), (req, res)=>{
+  users.login(req, res)
+})
+
+
 routes.patch('/user/:id', bodyParser.json(), (req, res) => {
   users.updateUser(req, res);
 });
