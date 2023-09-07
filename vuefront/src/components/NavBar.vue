@@ -7,6 +7,13 @@
                 <span class="navbar-toggler-icon"></span>
               </button>
 
+        <div class="proImg"> 
+  <a href="/profile">
+    <img src="https://i.postimg.cc/ncxd04Nf/profile-circle-icon-2048x2048-cqe5466q.png" style="width: 4rem;">
+  </a>
+</div>
+
+
               <div class="navCenter  collapse navbar-collapse" id="navbarTogglerDemo01">
                 <img src="https://i.postimg.cc/T1Ckqjx3/White-Neon-Green-Game-Logo-removebg-preview-1.png" style="width: 7rem;">
                 
@@ -26,10 +33,7 @@
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/contact">Contact</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/about">Cart</a>
-                  </li>             
+                  </li>          
                   <li class="nav-item">
                     <a class="nav-link" href="/resgister">Register</a>
                   </li>             
@@ -80,6 +84,15 @@
 #btnSearch {
   background: rgba(122, 113, 113, 0.397);
   color: white;
+}
+
+
+.proImg{
+  background: white;
+  border-radius: 100%;
+}
+.proImg:hover{
+  background: rgb(0, 153, 255);
 }
 </style>
 
