@@ -69,6 +69,21 @@ export default createStore({
       }
     },
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
     async fetchAllUsers(context){
       try{
         const {data} = await axios.get(`${fetchApi}users`)
