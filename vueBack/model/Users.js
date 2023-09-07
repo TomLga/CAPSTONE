@@ -1,5 +1,5 @@
 const db = require('../config/dbConnection')
-const {hash, compare, hashSync} = require ('bcrypt')
+const { hash, compare, hashSync } = require('bcrypt');
 const {createToken} = require('../Middleware/authentication')
 
 
@@ -44,56 +44,125 @@ class Users{
     }
     //---------------------------------
     
-    login(req, res) {
-        const {emailAdd, userPass} = req.body 
-        // query
-        const query = `
-        SELECT userID,firstName,lastName,
-        gender,emailAdd,userProfile
-        FROM Users
-        WHERE emailAdd = '${emailAdd}'  
-        `
-        db.query(query, async (err, result)=>{
-            if(err) throw err
+    // login(req, res) {
+    //     const {emailAdd, userPass} = req.body 
+    //     // query
+    //     const query = `
+    //     SELECT userID,firstName,lastName,
+    //     gender,emailAdd,userProfile
+    //     FROM Users
+    //     WHERE emailAdd = '${emailAdd}'  
+    //     `
+    //     db.query(query, async (err, result)=>{
+    //         if(err) throw err
 
-            if(!result?.length){  //to avoid err of undefined 21.00/05/september
-                res.json({
-                    status: res.statusCode,
-                    msg: "incorrect  email."
-                })
-            }else{
-                await compare(userPass,
-                    result[0].userPass,
-                    (cErr, cResult)=>{
-                        if(cErr) throw cErr
-                        // Creating the token
-                        const token =
-                        createToken({
-                            emailAdd,
-                            userPass
-                        })
+    //         if(!result?.length){  //to avoid err of undefined 21.00/05/september
+    //             res.json({
+    //                 status: res.statusCode,
+    //                 msg: "incorrect  email."
+    //             })
+    //         }else{
+    //             await compare(userPass,
+    //                 result[0].userPass,
+    //                 (cErr, cResult)=>{
+    //                     if(cErr) throw cErr
+    //                     // Creating the token
+    //                     const token =
+    //                     createToken({
+    //                         emailAdd,
+    //                         userPass
+    //                     })
                     
-                        if(cResult) {
-                            res.json({
-                                msg: "Logged in",
-                                token,
-                                result: result[0]
-                            })
-                        }else {
-                            res.json({
-                                status: res.statusCode,
-                                msg:
-                                "Invalid password or you have not registered"
-                            })
-                            console.log(token)
-                        }
-                    })
-            }
-        })
-    }
+    //                     if(cResult) {
+    //                         res.json({
+    //                             msg: "Logged in",
+    //                             token,
+    //                             result: result[0]
+    //                         })
+    //                     }else {
+    //                         res.json({
+    //                             status: res.statusCode,
+    //                             msg:
+    //                             "Invalid password or you have not registered"
+    //                         })
+    //                         console.log(token)
+    //                     }
+    //                 })
+    //         }
+    //     })
+    // }
 
     // ADD USER
-   async register(req,res){
+   
+    login(req, res) {
+        const { emailAdd, userPass } = req.body;
+    
+        if (!emailAdd || !userPass) {
+            // Check if email and password are provided in the request body
+            res.status(400).json({
+                status: res.statusCode,
+                msg: "Email and password are required fields.",
+            });
+            return;
+        }
+    
+        const query = `
+        SELECT userID, firstName, lastName,
+        gender, emailAdd, userPass, userProfile
+        FROM Users
+        WHERE emailAdd = ?;
+        `;
+    
+        db.query(query, [emailAdd], async (err, result) => {
+            if (err) {
+                console.error(err);
+                res.status(500).json({
+                    error: "An error occurred while fetching the user.",
+                });
+            } else if (!result || result.length === 0) {
+                // User not found
+                res.status(404).json({
+                    status: res.statusCode,
+                    msg: "User not found.",
+                });
+            } else {
+                // User found, compare passwords
+                const storedHashedPassword = result[0].userPass;
+    
+                compare(userPass, storedHashedPassword, (cErr, cResult) => {
+                    if (cErr) {
+                        console.error(cErr);
+                        res.status(500).json({
+                            error: "An error occurred while comparing passwords.",
+                        });
+                    } else if (cResult) {
+                        // Passwords match, generate and send token
+                        const token = createToken({
+                            emailAdd,
+                            userPass,
+                        });
+    
+                        res.status(200).json({
+                            msg: "Logged in",
+                            token,
+                            result: result[0],
+                        });
+                    } else {
+                        // Passwords do not match
+                        res.status(401).json({
+                            status: res.statusCode,
+                            msg: "Invalid password.",
+                        });
+                    }
+                });
+            }
+        });
+    }
+    
+   
+   
+   
+    async register(req,res){
         const data = req.body
         data.userPass = await hash(data.userPass,15) //salt add ths chars for encryption
         const user = {
