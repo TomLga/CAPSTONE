@@ -6,7 +6,8 @@
             <h2>WELCOME BACK, </h2>
             <form @submit.prevent="login">
                 <input v-model="payload.emailAdd" type="email" placeholder="EMAIL" required>
-                <input v-model="payload.userPass" type="password" placeholder="Password" required >
+                <input v-model="payload.userPass" type="password" placeholder="Password" required>
+
               <button type="submit">Login</button>
             </form>
         </div>    
