@@ -20,7 +20,7 @@
       <button style="margin:70px 0px;"> <a style="text-decoration: none; color:black"  href="/product">VIEW ALL PRODUCTS</a></button>
     </div>
 
-  <h1>HISTORY LESSON OF THE DAY</h1>
+  <h1 style="background-color: rgba(0, 0, 0, 0.853); color:white; margin:auto; margin-bottom:20px">HISTORY LESSON OF THE DAY</h1>
 
     <FtHistory/>
   </div>
@@ -78,6 +78,7 @@ background: #000;
 h1{
   text-align: center;
   text-decoration: underline;
+ 
 }
 
 .imgDiv {
