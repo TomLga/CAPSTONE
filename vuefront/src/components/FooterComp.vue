@@ -29,11 +29,13 @@
 
 
 <style>
+
 .footer{
     background-image: url('https://i.postimg.cc/NjNLDHBp/298254-cut-sword-to-right-filter.jpg');
     font-size: 20px;
     color: white;
     height: 135px;
+    width: 100%;
 }
 .info{
     text-align: center;
@@ -59,6 +61,9 @@ span{
     color: black;
     text-decoration: none;
     float: right;
-
 }
+
+
+  
+
 </style>
