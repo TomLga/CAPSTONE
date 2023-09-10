@@ -23,7 +23,7 @@
               </div>
               <div class="mb-3">
                 <label for="message-text" class="col-form-label">STOCK ON HAND:</label>
-                <input type="number" class="form-control" id="message-text">
+                <input v-model="products.prodName" type="number" class="form-control" id="message-text">
               </div>
               <div class="mb-3">
                 <label for="message-text" class="col-form-label">PRICE:</label>
@@ -53,6 +53,22 @@
 
 <script>
     export default {
+      data(){
+        return{
+          products:{
+            prodName: '',
+            qty:'',
+            price: '',
+            category:'',
+            prodImg:""
+          }
+        }
+      },
+      methods:{
+        addProduct(){
+          this.$store.dispatch("addProduct", this.products)
+        }
+      }
         
     }
 </script>
