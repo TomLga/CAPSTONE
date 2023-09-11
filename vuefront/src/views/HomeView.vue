@@ -107,6 +107,7 @@ have the buttons work
 the pop over work (maybe) or have it go to the education 
 
 
+connnecting my github to my git bash i need to still downlaod node mods
 
 
 

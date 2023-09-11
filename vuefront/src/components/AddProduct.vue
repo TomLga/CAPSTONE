@@ -23,7 +23,7 @@
               </div>
               <div class="mb-3">
                 <label for="message-text" class="col-form-label">STOCK ON HAND:</label>
-                <input type="number" v-model="model.product.qty" class="form-control" id="message-text">
+
               </div>
               <div class="mb-3">
                 <label for="message-text" class="col-form-label">PRICE:</label>
@@ -55,6 +55,7 @@
 import axios from 'axios';
 
     export default {
+]
       name:'addProductComp',
       data(){
         return{
@@ -71,6 +72,7 @@ import axios from 'axios';
         }
       },
       methods:{
+
         saveProduct(){
           axios.post('https://capstoneswordall.onrender.com/Addproduct', this.model.product)
           .then(res =>{
@@ -91,9 +93,6 @@ import axios from 'axios';
               // if(error.response.status == 422)
               // this.errorList = error.response.data.error
 
-
-
-
               console.log(error.response.data)
               console.log(error.response.status)
               console.log(error.response.headers)
@@ -107,6 +106,9 @@ import axios from 'axios';
 
 
           })
+
+        addProduct(){
+          this.$store.dispatch("addProduct", this.products)
 
         }
       }
