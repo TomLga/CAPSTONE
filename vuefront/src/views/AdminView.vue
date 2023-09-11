@@ -48,6 +48,7 @@
 <script>
 import SpinnerComp from '../components/SpinnerComp.vue';
 import AddProduct from '../components/AddProduct.vue'
+import sweet from 'sweetalert';
 
 
 export default {
@@ -76,6 +77,14 @@ export default {
     searchProducts() {
     },
   },
+  async fetchProducts() {
+      try {
+        await this.$store.dispatch('fetchAllProducts');
+        sweet("Success!", "Products fetched successfully!", "success");
+      } catch (error) {
+        sweet("Error!", "An error occurred while fetching products.", "error");
+      }
+    },
   mounted() {
     this.$store.dispatch('fetchAllProducts');
   },

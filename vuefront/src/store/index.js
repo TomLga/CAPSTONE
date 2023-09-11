@@ -50,6 +50,10 @@ export default createStore({
       state.signalView =signalView
     },
 
+    registerProduct (state, product){
+      state.users.push(product)
+    },
+
 
     setHistory(state, history){
       state.history = history
@@ -163,6 +167,42 @@ LogOut(context){
   cookies.remove("AUser")
 },
 
+async registerProduct(context, payload) {
+  try {
+    const response = await axios.post(`${fetchApi}addProduct`, payload);
+    const { msg, product } = response.data;
+
+    if (msg) {
+      context.commit("setMsg", msg);
+    } else {
+      context.commit("registerProduct", product);
+      context.commit("setMsg", "Product added successfully");
+    }
+  } catch (e) {
+    context.commit("setMsg", "An error occurred while adding the product");
+  }
+},
+
+
+
+// CRUD FUNCTIONS 
+
+async addProduct(context, payload) {
+  try {
+    const { res } = await axios.post(`${fetchApi}product`, payload);
+    const { msg, err } = await res.data;
+    console.log(msg, err);
+    if (msg) {
+      context.dispatch("fetchAllProducts")
+      context.commit("setProducts", msg);
+    } else {
+      context.commit("setMsg", err);
+    }
+  } catch (e) {
+    context.commit("setMsg", "an error occured");
+  }
+
+},
 
   modules: {
   }

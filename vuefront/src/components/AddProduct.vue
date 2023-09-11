@@ -1,6 +1,6 @@
 <template>
     <div>
-        
+        <h1 style="padding-top: 100px;">PROD MODULE</h1>
     <button id="addBtn" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" fdprocessedid="sia2z">ADD NEW PRODUCT</button>
     
     
@@ -15,34 +15,34 @@
             <form>
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">ID:</label>
-                <input type="number" class="form-control">
+                <input type="number" v-model="model.product.prodID" class="form-control">
               </div>
               <div class="mb-3">
                 <label for="message-text" class="col-form-label">NAME:</label>
-                <input class="form-control">
+                <input v-model="model.product.prodName" class="form-control">
               </div>
               <div class="mb-3">
                 <label for="message-text" class="col-form-label">STOCK ON HAND:</label>
-                <input v-model="products.prodName" type="number" class="form-control" id="message-text">
+
               </div>
               <div class="mb-3">
                 <label for="message-text" class="col-form-label">PRICE:</label>
-                <input  type="number" class="form-control" id="message-text">
+                <input  type="number" v-model="model.product.price" class="form-control" id="message-text">
               </div>
               <div class="mb-3">
                 <label for="message-text" class="col-form-label">CATEGORY:</label>
-                <input class="form-control" id="message-text">
+                <input  v-model="model.product.category" class="form-control" id="message-text">
               </div>
               <div class="mb-3">
                 <label for="message-text" class="col-form-label">IMG:</label>
-                <input  type="url" class="form-control" id="message-text">
+                <input  type="url" v-model="model.product.prodImg" class="form-control" id="message-text">
               </div>
              
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">ADD PRODUCT</button>
+            <button type="button" @click="saveProduct" class="btn btn-primary">ADD New PRODUCT</button>
           </div>
         </div>
       </div>
@@ -52,21 +52,64 @@
 </template>
 
 <script>
+import axios from 'axios';
+
     export default {
+]
+      name:'addProductComp',
       data(){
         return{
-          products:{
-            prodName: '',
-            qty:'',
-            price: '',
-            category:'',
+          model:{
+            product:{
+            prodID:"",
+            prodName:"",
+            qty:"",
+            price:"",
+            category:"",
             prodImg:""
+            }
           }
         }
       },
       methods:{
+
+        saveProduct(){
+          axios.post('https://capstoneswordall.onrender.com/Addproduct', this.model.product)
+          .then(res =>{
+            console.log(res.data)
+            alert(res.data.msg);
+
+            this.model.product ={
+            prodID:"",
+            prodName:"",
+            qty:"",
+            price:"",
+            category:"",
+            prodImg:""
+            }
+          })
+          .catch(function(error){
+            if(error.response){
+              // if(error.response.status == 422)
+              // this.errorList = error.response.data.error
+
+              console.log(error.response.data)
+              console.log(error.response.status)
+              console.log(error.response.headers)
+          
+            } else if(error.request){
+              console.log(error.request);
+            } else{
+              console.log('Error', error.msg);
+            }
+
+
+
+          })
+
         addProduct(){
           this.$store.dispatch("addProduct", this.products)
+
         }
       }
         
