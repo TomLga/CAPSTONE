@@ -36,8 +36,17 @@
                 <td>{{ item.price}}</td>
                 <td>{{ item.category }}</td>
                 <td> <img :src="item.prodImg" class="card-img-top img-fluid" style="width: 5rem; height: 5rem; margin:auto;"></td>
-                <td> ✒️</td>
-                <td>🗑️</td>
+                <td>
+                  <router-link :to="{path: '/product/' + item.prodID + '/edit'}" >
+                  ✒️
+                </router-link>
+                 
+                  
+                  </td>
+                <td>
+
+                  <button @click="delProduct(item.prodID)">🗑️</button>
+                  </td>
               </tr>
             </tbody>
           </table>
@@ -49,6 +58,7 @@
 import SpinnerComp from '../components/SpinnerComp.vue';
 import AddProduct from '../components/AddProduct.vue'
 import sweet from 'sweetalert';
+import axios from 'axios';
 
 
 export default {
@@ -74,6 +84,21 @@ export default {
     },
   },
   methods: {
+    delProduct(prodID){
+      console.log(prodID);
+
+      if(confirm('are you sure?')){
+      // console.log(prodID);
+      axios.delete(`https://capstoneswordall.onrender.com/product/${prodID}`)
+      .then(res =>{
+        alert(res.data.msg)
+      
+
+
+      })
+      }
+
+    },
     searchProducts() {
     },
   },
@@ -84,7 +109,7 @@ export default {
       } catch (error) {
         sweet("Error!", "An error occurred while fetching products.", "error");
       }
-    },
+   },
   mounted() {
     this.$store.dispatch('fetchAllProducts');
   },
