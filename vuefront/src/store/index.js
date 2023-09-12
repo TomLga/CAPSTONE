@@ -6,7 +6,10 @@ import {useCookies} from 'vue3-cookies'
 const {cookies}= useCookies()
 import authUserInfo from '../services/authUserInfo'
 
+
 const fetchApi = "https://capstoneswordall.onrender.com/"
+
+
 
 
 export default createStore({
@@ -15,17 +18,21 @@ export default createStore({
     user: null,
     addUser:null,
 
+
     products:null,
     product: null,
     signalView:null,
 
+
     history:null,
+
 
     token:null,
     msg:null
-    // category and spinner 
+    // category and spinner
   },
-  
+ 
+
 
   mutations: {
     setUsers(state, users){
@@ -40,6 +47,9 @@ export default createStore({
 
 
 
+
+
+
     setProducts(state, products){
       state.products = products
     },
@@ -50,9 +60,12 @@ export default createStore({
       state.signalView =signalView
     },
 
+
     registerProduct (state, product){
       state.users.push(product)
     },
+
+
 
 
     setHistory(state, history){
@@ -62,7 +75,9 @@ export default createStore({
         state.msg = msg
       }
 
+
   },
+
 
   actions: {
     // fetch all products
@@ -74,6 +89,7 @@ export default createStore({
         context.commit("setMsg", "an Error occ")
       }
     },
+
 
     async fetchHistory(context) {
       try {
@@ -92,8 +108,9 @@ export default createStore({
         context.commit("setMsg", "an Error occ")
       }
     }
-    
+   
   },
+
 
   //register
   // async addUser(context, payload) {
@@ -107,7 +124,7 @@ export default createStore({
   //         timer: 4000,
   //       });
   //       context.dispatch("fetchUsers"); //where is the fetchUsers comign from //from backedn?
-  //       router.push({ name: "login" }); 
+  //       router.push({ name: "login" });
   //     } else {
   //       sweet({
   //         title: "Error",
@@ -122,6 +139,8 @@ export default createStore({
   // },
 
 
+
+
   async addUser({ commit }, userData) {
     try {
       const response = await axios.post(`${fetchApi}users`, userData)
@@ -133,6 +152,7 @@ export default createStore({
     }
   }, //summer
 
+
   async login(context, payload) {
     try {
       const { msg, token, result } = (
@@ -141,7 +161,8 @@ export default createStore({
       if (result) {
         context.commit("setUser", { result, msg });
         cookies.set("AUser", { msg, token, result });
-        authUserInfo.applyToken(token); //the var name that i changed 
+        authUserInfo.applyToken(token); //the var name that i changed
+
 
         sweet({
           title: msg,
@@ -167,10 +188,12 @@ LogOut(context){
   cookies.remove("AUser")
 },
 
+
 async registerProduct(context, payload) {
   try {
     const response = await axios.post(`${fetchApi}addProduct`, payload);
     const { msg, product } = response.data;
+
 
     if (msg) {
       context.commit("setMsg", msg);
@@ -185,7 +208,11 @@ async registerProduct(context, payload) {
 
 
 
-// CRUD FUNCTIONS 
+
+
+
+// CRUD FUNCTIONS
+
 
 async addProduct(context, payload) {
   try {
@@ -202,8 +229,36 @@ async addProduct(context, payload) {
     context.commit("setMsg", "an error occured");
   }
 
+
 },
+
+
+
+
+async addUser(context, payload) {
+  try {
+    const { res } = await axios.post(`${fetchApi}user`, payload);
+    const { msg, err } = await res.data;
+    console.log(msg, err);
+    if (msg) {
+      context.dispatch("fetchAllUsers")
+      context.commit("setUsers", msg);
+    } else {
+      context.commit("setMsg", err);
+    }
+  } catch (e) {
+    context.commit("setMsg", "an error occured");
+  }
+
+
+},
+
+
+
 
   modules: {
   }
 })
+
+
+

@@ -72,7 +72,13 @@ const routes = [
     path: '/product/:id/edit',
     name: 'editProductComp',
     component:()=> import('../components/EditProducts.vue')
+  },
+  {
+    path: '/addNewUser',
+    name: 'addUserComp',
+    component:()=> import('../components/AddUser.vue')
   }
+
 ]
 
 
