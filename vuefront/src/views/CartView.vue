@@ -43,6 +43,7 @@ export default {
     },
   },
   methods: {
+    // this needs to come out
     delProduct(prodID){
       console.log(prodID);
 
