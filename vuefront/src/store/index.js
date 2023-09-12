@@ -44,6 +44,10 @@ export default createStore({
     setAddUser(state, data){
       state.addUser = data
     },
+    addToCart({ commit }, product) {
+      commit('addToCart', product);
+    },
+    
 
 
 
@@ -221,7 +225,6 @@ async registerProduct(context, payload) {
 
 
 
-
 // CRUD FUNCTIONS
 
 
@@ -244,8 +247,6 @@ async addProduct(context, payload) {
 },
 
 
-
-
 async addUser(context, payload) {
   try {
     const { res } = await axios.post(`${fetchApi}user`, payload);
@@ -264,12 +265,6 @@ async addUser(context, payload) {
 
 },
 
-
-
-
   modules: {
   }
 })
-
-
-
