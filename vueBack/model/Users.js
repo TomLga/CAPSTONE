@@ -32,7 +32,7 @@ class Users{
             if (err) {
                 console.error(err);
                 res.status(500).json({
-                    error: "An error occurred while fetching the user.",
+                    error: "error fetching user.",
                 });
             } else {
                 res.status(200).json({
@@ -164,7 +164,7 @@ class Users{
    
     async register(req,res){
         const data = req.body
-        data.userPass = await hash(data.userPass,15) //salt add ths chars for encryption
+        data.userPass = await hash(data.userPass,10) //salt add ths chars for encryption
         const user = {
             emailAdd:data.emailAdd,
             userPass:data.userPass
