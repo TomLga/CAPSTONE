@@ -1,6 +1,17 @@
 <template>
   <div>
-    <h1 style="padding-top: 100px;">USER REGISTRATION</h1>
+    <h1 style="padding-top: 100px;">USER MODULE</h1>
+    <button
+      id="addBtn"
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+      data-bs-whatever="@mdo"
+      fdprocessedid="sia2z"
+    >
+    REGISTER
+    </button>
 
     <div
       class="modal fade"
@@ -12,56 +23,50 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">REGISTER NEW USER</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">ADDING NEW USER</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body wholeModal">
             <form>
               <div class="mb-3">
-                <label for="userID" class="col-form-label">ID:</label>
-                <input type="number" v-model="model.user.userID" class="form-control" id="userID">
+                <label for="prodID" class="col-form-label">ID:</label>
+                <input type="number" v-model="model.user.userID"  class="form-control" id="prodID">
               </div>
               <div class="mb-3">
-                <label for="firstName" class="col-form-label">First Name:</label>
-                <input v-model="model.user.firstName" class="form-control" id="firstName">
+                <label for="prodName" class="col-form-label">NAME:</label>
+                <input   v-model="model.user.firstName" class="form-control" id="prodName">
               </div>
               <div class="mb-3">
-                <label for="lastName" class="col-form-label">Last Name:</label>
-                <input v-model="model.user.lastName" class="form-control" id="lastName">
+                <label for="qty" class="col-form-label">Surname</label>
+                <input  v-model="model.user.lastName"   class="form-control" id="qty">
               </div>
               <div class="mb-3">
-                <label for="gender" class="col-form-label">Gender:</label>
-                <select v-model="model.user.gender" class="form-select" id="gender">
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                  <option value="other">Other</option>
-                </select>
+                <label for="price" class="col-form-label">Gender</label>
+                <input  v-model="model.user.gender" class="form-control" id="price">
               </div>
               <div class="mb-3">
-                <label for="email" class="col-form-label">Email:</label>
-                <input v-model="model.user.email" type="email" class="form-control" id="email">
+                <label for="category" class="col-form-label">emailAdd</label>
+                <input   v-model="model.user.emailAdd" class="form-control" id="category">
               </div>
               <div class="mb-3">
-                <label for="password" class="col-form-label">Password:</label>
-                <input v-model="model.user.password" type="password" class="form-control" id="password">
+                <label for="category" class="col-form-label">Password:</label>
+                <input  v-model="model.user.userPass" class="form-control" id="category">
               </div>
               <div class="mb-3">
-                <label for="userProfile" class="col-form-label">Profile Image URL:</label>
-                <input type="url" v-model="model.user.userProfile" class="form-control" id="userProfile">
+                <label for="prodImg" class="col-form-label">IMG:</label>
+                <input type="url" v-model="model.user.userProfile" class="form-control" id="prodImg">
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" @click="saveUser" class="btn btn-primary">Register</button>
+            <button type="button" @click="saveUser" class="btn btn-primary">ADD New User</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-
-
 
   <script>
 import axios from 'axios';

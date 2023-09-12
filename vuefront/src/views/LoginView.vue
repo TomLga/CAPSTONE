@@ -10,21 +10,21 @@
 
               <button type="submit">Login</button>
             </form>
+
+            <span> dont have an account? <router-link  to="/addNewUser">signUp</router-link>
+            </span>
         </div>    
-       
-        <BUtton>
-            <router-link to="/signup">signUp</router-link>
-        </BUtton>
+    
     </div>
-</template>
+</template> 
 
 <script>
 
-import SignupComp from '@/components/SignupComp.vue';
+import RegisterComp from '@/components/RegisterComp.vue';
 
 export default{
     components:{
-        SignupComp
+        RegisterComp
     },
     data(){
         return {

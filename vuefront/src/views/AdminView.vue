@@ -9,7 +9,7 @@
         <h5>Products</h5>
 
         
-       <button><a class="nav-link" href="/users">USERS ADMIN</a></button> 
+       <button><a class="nav-link" href="/UserAdmin">USERS ADMIN</a></button> 
 
      <AddProduct/> 
         
