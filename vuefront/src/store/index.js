@@ -141,16 +141,16 @@ export default createStore({
 
 
 
-  async addUser({ commit }, userData) {
-    try {
-      const response = await axios.post(`${fetchApi}users`, userData)
-      commit('setAddUser', response.data)
-      location.reload()
-      console.log('testing');
-    } catch (error) {
-      console.log(error);
-    }
-  }, //summer
+  // async addUser({ commit }, userData) {
+  //   try {
+  //     const response = await axios.post(`${fetchApi}users`, userData)
+  //     commit('setAddUser', response.data)
+  //     location.reload()
+  //     console.log('testing');
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }, //summer
 
 
   async login(context, payload) {
