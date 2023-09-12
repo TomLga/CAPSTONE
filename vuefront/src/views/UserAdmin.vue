@@ -3,7 +3,7 @@
         <h1 style="padding-top: 100px;">USER ADMIN</h1>
 
         <div>
-            <h1 id="admin">USERS page</h1>
+        
             <form class="d-flex searchTab" role="search" @submit.prevent="searchProducts">
                 <input v-model="searchQuery" class="form-control me-2" type="search" placeholder="Search by name" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
@@ -37,7 +37,10 @@
                     <td>{{ data.emailAdd }}</td>
                     <td> <img :src="data.userProfile" class="card-img-top img-fluid" style="width: 5rem; height: 5rem; margin:auto;"></td>
                     <td> ✒️</td>
-                    <td>🗑️</td>
+                    <td>
+
+                      <button @click="delUser(data.userID)">🗑️</button>
+                      </td>
                   </tr>
                 </tbody>
               </table>
@@ -49,6 +52,9 @@
 <script>
 // import SpinnerComp from '../components/SpinnerComp.vue';
 // import AddUser from '../components/AddUser.vue'
+
+import sweet from 'sweetalert';
+import axios from 'axios';
 
 
 export default {
@@ -75,6 +81,20 @@ export default {
   methods: {
     searchProducts() {
     },
+    delUser(userID){
+      console.log(userID);
+
+      if(confirm('are you sure?')){
+      // console.log(prodID);
+      axios.delete(`https://capstoneswordall.onrender.com/user/${userID}`)
+      .then(res =>{
+        alert(res.data.msg)
+      
+
+
+      })
+      }
+    }
   },
   mounted() {
     console.log('Fetching users...');
