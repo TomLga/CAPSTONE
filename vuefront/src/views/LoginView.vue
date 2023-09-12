@@ -8,7 +8,7 @@
                 <input v-model="payload.emailAdd" type="email" placeholder="emailAdd" required>
                 <input v-model="payload.userPass" type="password" placeholder="userPass" required>
 
-              <button type="submit">Login</button>
+              <button @click="logedIn" type="submit">Login</button>
             </form>
 
             <span> dont have an account? <router-link  to="/addNewUser">signUp</router-link>
@@ -42,8 +42,12 @@ export default{
     methods:{
         login(){
             this.$store.dispatch("login", this.payload)
-
+        },
+        logedIn(){
+            alert("i was clicked")
+            
         }
+    
     },
     beforeCreate(){
         this.$store.dispatch("fetchUsers")
