@@ -76,7 +76,7 @@ const routes = [
   {
     path: '/addNewUser',
     name: 'addUserComp',
-    component:()=> import('../components/AddUser.vue')
+    component:()=> import('../components/RegisterComp.vue')
   }
 
 ]
