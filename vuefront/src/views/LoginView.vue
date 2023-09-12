@@ -5,7 +5,7 @@
         <div class="login-Container">
             <h2>WELCOME BACK, </h2>
             <form action="action_page.php" @submit.prevent="login">
-                <input v-model="payload.emailAdd" type="password" placeholder="emailAdd" required>
+                <input v-model="payload.emailAdd" type="email" placeholder="emailAdd" required>
                 <input v-model="payload.userPass" type="password" placeholder="userPass" required>
 
               <button type="submit">Login</button>

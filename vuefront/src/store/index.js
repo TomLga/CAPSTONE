@@ -183,7 +183,7 @@ export default createStore({
       context.commit("setMsg", "An error has occured");
     }
   },
-LogOut(context){
+Logout(context){
   context.commit('setUser')
   cookies.remove("AUser")
 },
@@ -192,14 +192,25 @@ LogOut(context){
 async registerProduct(context, payload) {
   try {
     const response = await axios.post(`${fetchApi}addProduct`, payload);
-    const { msg, product } = response.data;
+    const { msg } = response.data;
 
 
     if (msg) {
-      context.commit("setMsg", msg);
+      sweet({
+        title: 'Registration',
+        text: msg,
+        icon: "success",
+        timer: 3000,
+      });
+      context.dispatch("fetchAllUsers")
+      router.push({ name: "login" });
     } else {
-      context.commit("registerProduct", product);
-      context.commit("setMsg", "Product added successfully");
+      sweet({
+        title: "Error",
+        text: msg,
+        icon: "error",
+        timer: 3000,
+      });
     }
   } catch (e) {
     context.commit("setMsg", "An error occurred while adding the product");
