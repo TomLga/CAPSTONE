@@ -2,14 +2,11 @@ import { createStore } from 'vuex'
 import axios from 'axios'
 import sweet from 'sweetalert'
 import router from '@/router'
-import {useCookies} from 'vue3-cookies'
-const {cookies}= useCookies()
+import { useCookies } from 'vue3-cookies';
+const { cookies } = useCookies()
 import authUserInfo from '../services/authUserInfo'
 
 const fetchApi = "https://capstoneswordall.onrender.com/"
-
-
-
 
 export default createStore({
   state: {
@@ -21,6 +18,7 @@ export default createStore({
     products:null,
     product: null,
     signalView:null,
+    editProduct:[],
 
 
     history:null,
@@ -67,7 +65,10 @@ export default createStore({
     },
       setMsg(state, msg) {
         state.msg = msg
-      }
+      },
+      SET_PRODUCTS(state, products) {
+        state.products = products;
+      },
 
 
   },
@@ -103,6 +104,23 @@ export default createStore({
       }
     }
   },
+
+  async updateProducts(context, payload) {
+    try {
+      const response = await axios.patch(`https://capstoneswordall.onrender.com/product/${payload.prodID}`, payload);
+      const productToEdit = response.data;
+      context.dispatch("fetchAllProducts");
+      sweet({
+        title: "Product Updated",
+        text: productToEdit.msg,
+        icon: "success",
+        timer: 2000
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
 
   //register
   // async addUser(context, payload) {
