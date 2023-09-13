@@ -6,7 +6,6 @@ import {useCookies} from 'vue3-cookies'
 const {cookies}= useCookies()
 import authUserInfo from '../services/authUserInfo'
 
-
 const fetchApi = "https://capstoneswordall.onrender.com/"
 
 
@@ -32,8 +31,6 @@ export default createStore({
     // category and spinner
   },
  
-
-
   mutations: {
     setUsers(state, users){
       state.users = users
