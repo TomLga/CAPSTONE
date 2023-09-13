@@ -47,10 +47,14 @@
 
                   <button @click="delProduct(item.prodID)">🗑️</button>
                   </td>
-              </tr>
-            </tbody>
+                </tr>
+              </tbody>
+              <div v-else >
+                <!-- <SpinnerComp/> -->
+                <H1 style="font-size: 30px; color:rgb(255, 0, 0)">loading please wait</H1>
+            </div>
           </table>
-    </div>
+        </div>
 </template>
 
 

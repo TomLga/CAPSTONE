@@ -6,7 +6,8 @@
     </form>
 
     <div class="card-group prodCardBody">
-      <div class="row">
+
+      <div class="row" v-if="products">
         <div class="col-md-6 col-lg-4" v-for="item in filteredProducts" :key="item.prodID">
     
           <div class="card wholeCard">
@@ -19,10 +20,7 @@
               <button class="btn btn-outline-primary" @click="viewItem(item.prodID)">VIEW MORE</button>
             
               <button @click="AddCart(item)" class="btn btn-outline-primary"> add
-                <img style="width: 1rem;" src="https://i.postimg.cc/Vkfvwcdf/cart-add-to-cart-icon-transparent-removebg-preview.png" alt="" srcset="">
-                
-    
-              
+                <img style="width: 1rem;" src="https://i.postimg.cc/Vkfvwcdf/cart-add-to-cart-icon-transparent-removebg-preview.png">        
               </button>
              
             </div>
@@ -34,6 +32,9 @@
         </div>
       </div>
       
+      <div v-else >
+       <h1>PLEASE WAIT</h1>
+    </div>
     </div>
   </div>
 </template>

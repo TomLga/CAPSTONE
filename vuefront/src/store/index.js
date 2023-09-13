@@ -49,11 +49,6 @@ export default createStore({
     },
     
 
-
-
-
-
-
     setProducts(state, products){
       state.products = products
     },
@@ -68,8 +63,6 @@ export default createStore({
     registerProduct (state, product){
       state.users.push(product)
     },
-
-
 
 
     setHistory(state, history){
@@ -112,9 +105,7 @@ export default createStore({
         context.commit("setMsg", "an Error occ")
       }
     }
-   
   },
-
 
   //register
   // async addUser(context, payload) {
@@ -155,8 +146,6 @@ export default createStore({
   //     console.log(error);
   //   }
   // }, //summer
-
-
   async login(context, payload) {
     try {
       const { msg, token, result } = (
@@ -221,13 +210,7 @@ async registerProduct(context, payload) {
   }
 },
 
-
-
-
-
 // CRUD FUNCTIONS
-
-
 async addProduct(context, payload) {
   try {
     const { res } = await axios.post(`${fetchApi}product`, payload);
@@ -242,10 +225,7 @@ async addProduct(context, payload) {
   } catch (e) {
     context.commit("setMsg", "an error occured");
   }
-
-
 },
-
 
 async addUser(context, payload) {
   try {
