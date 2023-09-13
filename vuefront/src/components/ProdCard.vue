@@ -17,8 +17,13 @@
 
             <div id="btncartmore">
               <button class="btn btn-outline-primary" @click="viewItem(item.prodID)">VIEW MORE</button>
-              <!-- <button class="btn btn-outline-primary" @click="AddToCart(item.prodID)">Add to Cart</button> -->
-              <button @click="AddCart(item)" class="btn">Cart</button>
+            
+              <button @click="AddCart(item)" class="btn btn-outline-primary"> add
+                <img style="width: 1rem;" src="https://i.postimg.cc/Vkfvwcdf/cart-add-to-cart-icon-transparent-removebg-preview.png" alt="" srcset="">
+                
+    
+              
+              </button>
              
             </div>
 
@@ -60,15 +65,16 @@ export default {
     searchProducts() {
      
     },
-    viewItem(prodID) {
-    const selectedProduct = this.products.find((item) => item.prodID === prodID);
-    this.$store.dispatch('addToCart', selectedProduct);
-    this.$router.push({ name: 'prodSingView', params: { prodID: prodID } });
-  },
-  // addToCart(prodID) {
-  //   const selectedProduct = this.products.find((item) => item.prodID === prodID);
-  //   this.$store.dispatch('addToCart', selectedProduct);
-  // }
+    viewItem(prodID){
+      const cProd = this.products.find(
+        (item)=>
+        item.prodID === prodID
+      );
+      this.$store.commit("setSignalView", cProd);
+      this.$router.push({name: "prodSingView", params:{ prodID:prodID}})
+    },
+
+
   AddCart(item) {
       const data = JSON.parse(localStorage.getItem('cart')) || []
 

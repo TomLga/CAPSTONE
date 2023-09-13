@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bodyCart">
     <h1 style="margin-top: 100px;">Shopping Cart</h1>
     <div>
 
@@ -25,9 +25,9 @@
           </tr>
         </tbody>
       </table>
-    <div v-else>
-            <img src="https://i.postimg.cc/8P7MdZmC/empty-Shop-Cart.png">
-        </div>
+      <div v-else class="empty-cart-container">
+        <img class="img-fluid" id="emptyCart" src="https://i.postimg.cc/NftSgm0G/empty-Shop-Cart-removebg-preview.png">
+      </div>
     </div>
 
   </div>
@@ -63,6 +63,10 @@ export default {
 </script>
 
 <style>
+.bodyCart{
+  height:82vh;
+} 
+
 /* Add your custom styles here */
 .cart-table {
   margin-top: 20px;
@@ -84,6 +88,17 @@ export default {
 #checkout-heading {
   font-size: 24px;
   margin-top: 20px;
+}
+
+.empty-cart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh; /* Adjust the height as needed */
+}
+
+#emptyCart {
+  background: #000;
 }
 
 </style>
