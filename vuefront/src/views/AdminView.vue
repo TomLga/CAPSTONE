@@ -96,8 +96,6 @@ export default {
       axios.delete(`https://capstoneswordall.onrender.com/product/${prodID}`)
       .then(res =>{
         alert(res.data.msg)
-      
-
 
       })
       }
