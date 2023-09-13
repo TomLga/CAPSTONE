@@ -1,22 +1,26 @@
 <template>
     <div class="bodyy">
-        <h1 id="topText">WELCOME BACK</h1>
-
-        <div class="login-Container">
+      <h1 id="topText">WELCOME BACK</h1>
+  
+      <div class="login-Container">
+        <div class="content">
+          <div class="sideImgLogin">
+            <img src="https://i.postimg.cc/fbVQ2FDF/5fcd23f8-02d4-4b85-bd99-92fe6ba4188a.jpg" style="width: 16rem;">
+          </div>
+          <div class="formContainer">
             <h2>WELCOME BACK, </h2>
             <form action="action_page.php" @submit.prevent="login">
-                <input v-model="payload.emailAdd" type="email" placeholder="emailAdd" required>
-                <input v-model="payload.userPass" type="password" placeholder="userPass" required>
-
+              <input v-model="payload.emailAdd" type="email" placeholder="emailAdd" required>
+              <input v-model="payload.userPass" type="password" placeholder="userPass" required>
               <button @click="logedIn" type="submit">Login</button>
             </form>
-
-            <span> dont have an account? <router-link  to="/addNewUser">signUp</router-link>
-            </span>
-        </div>    
-    
+            <span id="signSpan">Don't have an account? <router-link  style="color:white; font-size: 20px;" to="/addNewUser">Sign Up</router-link></span>
+          </div>
+        </div>
+      </div>
     </div>
-</template> 
+  </template>
+  
 
 <script>
 
@@ -62,30 +66,23 @@ export default{
     padding-top: 100px;
     color: white;
 }
-.bodyy{
-    /*background-image: url('https://i.postimg.cc/4yCp3gTf/sword-cross-swords.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;*/
-    background: linear-gradient(45deg, rgb(0, 0, 0) 20%,rgb(0, 0, 0) 20%, rgb(255, 255, 255));
 
-    
-
-}
 /*tok desgin*/
 .login-Container{
-    background: rgba(255, 255,255, 0.8);
+   
+  
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    width: 500px;
+    box-shadow: 0px 0px 10px rgb(255, 255, 255);
+    width: 900px;
    
     text-align: center;
     margin: auto;
+    margin-bottom: 20px;
   
 }
 .login-Container h2{
     margin-bottom: 20px;
-    text-transform: uppercase;
     letter-spacing: 3px;
 
   
@@ -94,7 +91,8 @@ export default{
     width: 90%;
     padding:5px ;
     margin-bottom: 10px;
-    border: 1px solid #000fff;
+    border: 1px solid #000000;
+    box-shadow: 10px 10px 20px;
     border-radius: 5px;
 }
 .login-Container button{
@@ -106,16 +104,42 @@ export default{
     cursor: pointer;
 }
 .login-Container button:hover{
-    background-color: #0056b3;
+    background-color: #ffffff;
+    color: #000000;
 }
 @media (max-width:480px){
     .login-Container{
         width: 80%;
     }
 }
-
 .spaceGap{
     height: 30vh;
 }
+
+.login-Container {
+    /* ... other styles ... */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+  }
+  
+  .sideImgLogin {
+    width: fit-content;
+    margin-right: 20px; /* Add some space between the image and the form */
+  }
+  
+  .formContainer {
+    text-align: center; /* Center-align the form content */
+  }
+  #signSpan{
+    color: #000000;
+  }
+
 
 </style>

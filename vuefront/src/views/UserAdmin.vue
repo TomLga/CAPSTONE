@@ -28,7 +28,7 @@
             
                   </tr>
                 </thead>
-                <tbody>
+                <tbody v-if="users">
                   <tr v-for="data in users" :key="data.userID">
                     <td>{{ data.userID }}</td>
                     <td>{{ data.firstName }}</td>
@@ -43,6 +43,10 @@
                       </td>
                   </tr>
                 </tbody>
+                <div v-else >
+                  <!-- <SpinnerComp/> -->
+                  <H1 style="font-size: 30px; color:rgb(255, 0, 0)">loading please wait</H1>
+              </div>
               </table>
         </div>
 
@@ -50,7 +54,7 @@
 </template>
 
 <script>
-// import SpinnerComp from '../components/SpinnerComp.vue';
+import SpinnerComp from '../components/SpinnerComp.vue';
 // import AddUser from '../components/AddUser.vue'
 
 import sweet from 'sweetalert';
@@ -58,6 +62,10 @@ import axios from 'axios';
 
 
 export default {
+  components:{
+    SpinnerComp
+
+  },
   data() {
     return {
       searchQuery: '',
@@ -104,3 +112,14 @@ export default {
 </script>
 
 
+<style>
+.searchTab{
+  width: 50rem;
+  margin: auto;
+
+}
+.searchTab >input{
+  background: #bab5b5;
+}
+
+</style>
