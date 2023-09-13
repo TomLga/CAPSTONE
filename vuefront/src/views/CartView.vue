@@ -21,7 +21,9 @@
             <td>{{ product.key.prodName }}</td>
             <td>{{ product.key.qty }}</td>
             <td>{{ product.key.price }}</td>
-            <td><button @click="delProduct(product.key.prodID)">🗑️</button></td>
+            <!-- <td><button @click="delProduct(product.key.prodID)">🗑️</button></td> -->
+            <button @click="removeFromCart(product.key.prodID)" class="remove-button">delete</button>
+            
           </tr>
         </tbody>
       </table>
@@ -43,7 +45,11 @@ export default {
     },
   },
   methods: {
-    // this needs to come out
+    removeFromCart(prodID) {
+  console.log("Removing product with ID:", prodID);
+  this.$store.commit('removeFromCart', prodID); 
+},
+
     delProduct(prodID){
       console.log(prodID);
 
