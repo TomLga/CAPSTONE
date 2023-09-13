@@ -49,14 +49,14 @@ class Users{
         // query
         const query = `
         SELECT userID,firstName,lastName,
-        gender,emailAdd,userProfile
+        gender,emailAdd,userPass, userProfile
         FROM Users
         WHERE emailAdd = '${emailAdd}'  
         `
         db.query(query, async (err, result)=>{
             if(err) throw err
 
-            if(!result?.length){  //to avoid err of undefined 21.00/05/september
+            if(!result?.length){  
                 res.json({
                     status: res.statusCode,
                     msg: "incorrect  email."
@@ -164,7 +164,7 @@ class Users{
    
     async register(req,res){
         const data = req.body
-        data.userPass = await hash(data.userPass,10) //salt add ths chars for encryption
+        data.userPass = await hash(data?.userPass,10) //salt add ths chars for encryption
         const user = {
             emailAdd:data.emailAdd,
             userPass:data.userPass
