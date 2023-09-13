@@ -15,8 +15,6 @@
       </div>
     </div>
 
-
-
     <div class="col">
       <div>
         <h2 class="card-title" style="text-decoration: underline;">{{ item.prodName }}</h2>
@@ -33,10 +31,6 @@
       </div>
 
       </div>
-      
-
-
-
     </div>
   
   </div>
