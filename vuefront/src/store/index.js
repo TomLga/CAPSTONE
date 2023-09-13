@@ -22,6 +22,7 @@ export default createStore({
 
 
     history:null,
+    cartItems: JSON.parse(localStorage.getItem("cart")) || [],
 
 
     token:null,
@@ -39,11 +40,24 @@ export default createStore({
     setAddUser(state, data){
       state.addUser = data
     },
-    addToCart({ commit }, product) {
-      commit('addToCart', product);
+    // addToCart({ commit }, product) {
+    //   commit('addToCart', product);
+    // },
+    addToCart(state, product) {
+      state.cartItems.push(product);
+      localStorage.setItem("cart", JSON.stringify(state.cartItems)); // Save to localStorage
     },
-    
-
+    removeFromCart(state, prodID) {
+      console.log("Current cart items:", state.cartItems);
+      state.cartItems = state.cartItems.filter(product => product.key.prodID !== prodID);
+      console.log("Updated cart items:", state.cartItems);
+      // Also update the local storage if needed
+      localStorage.setItem("cart", JSON.stringify(state.cartItems));
+    },
+    removeFromCart(state, prodID) {
+      state.cartItems = state.cartItems.filter(product => product.key.prodID !== prodID);
+      localStorage.setItem("cart", JSON.stringify(state.cartItems)); // Save to localStorage
+    },
     setProducts(state, products){
       state.products = products
     },
