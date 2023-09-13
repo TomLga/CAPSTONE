@@ -4,6 +4,20 @@
       <input v-model="searchQuery" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success btnSearch" type="submit">Search</button>
     </form>
+    <select class="filterButton" @change="filterByCategory">
+      <option value="">WORLDWIDE</option>
+      <option value="Europe">Europe</option>
+      <option value="Asia">Asia</option>
+      <option value="Africa">Africa</option>
+      <!-- Add more options as needed -->
+    </select>
+    <select class="btn" @change="handleSortOption">
+      <option value="name"> filterd by Name..</option>
+      <option value="priceLowToHigh">Price Low to High</option>
+      <option value="priceHighToLow">Price High to Low</option>
+      <!-- Add more sorting options as needed -->
+    </select>
+
 
     <div class="card-group prodCardBody">
 
@@ -49,23 +63,75 @@ export default {
   data() {
     return {
       searchQuery: '',
+      priceSortOrder: 'asc', 
+      SelectedCategory: null,// Initialize the sorting order
     };
   },
   computed: {
     products() {
-      return this.$store.state.products || [];
-    },
-    filteredProducts() {
-      const searchQuery = this.searchQuery.toLowerCase();
-      return this.products.filter(item =>
-        item.prodName.toLowerCase().includes(searchQuery)
-      );
-    },
+    return this.$store.state.products || [];
+  },
+  filteredProducts() {
+    const searchQuery = this.searchQuery.toLowerCase();
+
+    // Filter by search query and category
+    return this.products.filter(item => {
+      const matchesSearch = item.prodName.toLowerCase().includes(searchQuery);
+      const matchesCategory = !this.SelectedCategory || item.category === this.SelectedCategory;
+      
+      return matchesSearch && matchesCategory;
+    });
+  },
   },
   methods: {
     searchProducts() {
+      // if (this.searchQuery) {
+      //   return this.searchBar()
+      // } else {
+      //   return this.products
+      // }
      
     },
+   
+    filterByCategory(event) {
+    // Get the selected category from the event target's value
+    const selectedCategory = event.target.value;
+    this.SelectedCategory = selectedCategory;
+  },
+    sortAmount(order) {
+      // Update the priceSortOrder based on the button clicked
+      this.priceSortOrder = order;
+
+      this.products.sort((a, b) => {
+        const priceA = a.price;
+        const priceB = b.price;
+
+        if (this.priceSortOrder === 'asc') {
+          return priceA - priceB;
+        } else {
+          return priceB - priceA;
+        }
+      });
+    },
+    sortABC() {
+      this.amount = !this.amount;
+      this.products.sort((a, b) => {
+        const big = a.prodName.toLowerCase();
+        const small = b.prodName.toLowerCase();
+
+        if (big < small) {
+          return this.amount ? -1 : 1;
+        } else if (big > small) {
+          return this.amount ? 1 : -1;
+        } else {
+          return 0;
+        }
+      });
+    },
+
+
+
+
     viewItem(prodID){
       const cProd = this.products.find(
         (item)=>
@@ -84,6 +150,17 @@ export default {
 
       localStorage.setItem('cart', JSON.stringify(data))
     },
+    handleSortOption(event) {
+    const selectedSortOption = event.target.value;
+
+    if (selectedSortOption === 'name') {
+      this.sortABC();
+    } else if (selectedSortOption === 'priceLowToHigh') {
+      this.sortAmount('asc');
+    } else if (selectedSortOption === 'priceHighToLow') {
+      this.sortAmount('desc');
+    }
+  },
 
 
   },
