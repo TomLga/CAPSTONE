@@ -79,6 +79,11 @@ const routes = [
     path: '/addNewUser',
     name: 'addUserComp',
     component:()=> import('../components/RegisterComp.vue')
+  },
+  {
+    path: '/logout',
+    name: 'logout',
+    component:()=> import('../views/LoginView.vue')
   }
 
 ]
