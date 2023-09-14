@@ -1,23 +1,27 @@
 <template>
   <div>
     <form class="d-flex searchTab" role="search" @submit.prevent="searchProducts">
-      <input v-model="searchQuery" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success btnSearch" type="submit">Search</button>
+      <input v-model="searchQuery" class="form-control me-2 barSearch" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-dark btnSearch" type="submit">Search</button>
     </form>
+    <div id="optCategory">
     <select class="filterButton" @change="filterByCategory">
-      <option value="">WORLDWIDE</option>
-      <option value="Europe">Europe</option>
-      <option value="Asia">Asia</option>
-      <option value="Africa">Africa</option>
-      <!-- Add more options as needed -->
+      <option value=""> filtered by WORLDWIDE 🌍</option>
+      <option value="Europe">Europe⚔️ </option>
+      <option value="Asia">Asia ⚔️</option>
+      <option value="Africa">Africa ⚔️</option>  
     </select>
-    <select class="btn" @change="handleSortOption">
+
+
+    <div id="namePriceFilter">
+    <select class="filterName" @change="handleSortOption">
       <option value="name"> filterd by Name..</option>
       <option value="priceLowToHigh">Price Low to High</option>
       <option value="priceHighToLow">Price High to Low</option>
-      <!-- Add more sorting options as needed -->
+    
     </select>
-
+  </div>
+  </div>
 
     <div class="card-group prodCardBody">
 
@@ -31,9 +35,9 @@
             </div>
 
             <div id="btncartmore">
-              <button class="btn btn-outline-primary" @click="viewItem(item.prodID)">VIEW MORE</button>
+              <button class="btn btn-outline-dark" @click="viewItem(item.prodID)">VIEW MORE</button>
             
-              <button @click="AddCart(item)" class="btn btn-outline-primary"> add
+              <button @click="AddCart(item)" class="btn btn-outline-dark"> add
                 <img style="width: 1rem;" src="https://i.postimg.cc/Vkfvwcdf/cart-add-to-cart-icon-transparent-removebg-preview.png">        
               </button>
              
@@ -175,15 +179,18 @@ export default {
   width: 90%;
   margin: auto;
   display: flex;
+
 }
 .wholeCard {
-  background: #111010c5;
-  color: rgb(255, 254, 254);
+  /*background: #111010c5;*/
+  background-color: rgba(45, 47, 47, 0.823);
+  color: rgb(220, 214, 214);
   margin: 20px;
   padding: 15px;
   max-width: 100%;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  box-shadow: 10px 10px 6px rgb(0, 0, 0);
+  border:3px solid black;
+  border-radius: 10px ;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -192,7 +199,14 @@ export default {
 }
 #btncartmore {
   display: flex;
-  justify-content: space-evenly;
+  
+  width: 300px;
+  margin: auto ;
+
+}
+#btncartmore > button {
+  background: #aaa6a688;
+ margin-left:4px;
 }
 .priceDiv {
   font-size: 20px;
@@ -210,9 +224,11 @@ img:hover {
   width: 50%;
   margin: auto;
   margin-bottom: 20px;
+  box-shadow: 20px 20px 20px ;
+
 }
 .searchTab > input {
-  background: #706767;
+  background: #a6a4a4;
   color: white;
 }
 @media (max-width: 600px) {
@@ -222,5 +238,37 @@ img:hover {
   form {
     width: 100%;
   }
+}
+
+
+
+
+/*new styles*/
+.btnSearch{
+  background: #d4cdcd58;
+  width: 200px;
+}
+
+.btnSearch:hover{
+  background: #ffffff81;
+  color: black;
+}
+
+#optCategory{
+  margin-left: 80%;
+ 
+}
+.filterButton,.filterName{
+  background:rgba(0, 0, 0, 0.449);
+  color: white;
+  width: 240px;
+  border-radius: 10px 0px 20px;
+}
+.filterName {
+  background: rgba(0, 0, 0, 0.449);
+  color: white;
+  width: 240px;
+  border-radius: 10px 0px 20px;
+  margin-top: 10px; /* Add margin to create space between the two dropdowns */
 }
 </style>
