@@ -29,6 +29,7 @@ const routes = [
   },
   {
     path: '/resgister',
+    name: 'resgister',
   
     component: () => import('../views/LoginView.vue')
   },
