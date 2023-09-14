@@ -1,30 +1,33 @@
 <template>
-    <div class="bodyy">
-      <h1 id="topText">WELCOME BACK</h1>
-  
-      <div class="login-Container">
-        <div class="content">
-          <div class="sideImgLogin">
-            <img src="https://i.postimg.cc/fbVQ2FDF/5fcd23f8-02d4-4b85-bd99-92fe6ba4188a.jpg" style="width: 16rem;">
-          </div>
-          <div class="formContainer">
-            <h2>WELCOME BACK, </h2>
-            <form action="action_page.php" @submit.prevent="login">
-              <input v-model="payload.emailAdd" type="email" placeholder="emailAdd" required>
-              <input v-model="payload.userPass" type="password" placeholder="userPass" required>
-              <button @click="logedIn" type="submit">Login</button>
-            </form>
-            <span id="signSpan">Don't have an account? <router-link  style="color:white; font-size: 20px;" to="/addNewUser">Sign Up</router-link></span>
-          </div>
+  <div class="bodyy">
+    <h1 id="topText">WELCOME BACK</h1>
+
+    <div class="login-Container">
+      <div class="content">
+        <div class="sideImgLogin">
+          <img src="https://i.postimg.cc/fbVQ2FDF/5fcd23f8-02d4-4b85-bd99-92fe6ba4188a.jpg" style="width: 16rem;">
+        </div>
+        <div class="formContainer">
+          <h2>WELCOME BACK, </h2>
+          <form @submit.prevent="login">
+            <input v-model="payload.emailAdd" name="emailAdd" type="email" placeholder="Email" required>
+            <input v-model="payload.userPass" name="userPass" type="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+          </form>
+          <span id="signSpan">Don't have an account? <router-link style="color:white; font-size: 20px;" to="/addNewUser">Sign Up</router-link></span>
         </div>
       </div>
     </div>
-  </template>
+  </div>
+</template>
   
 
 <script>
 
 import RegisterComp from '@/components/RegisterComp.vue';
+
+
+
 
 export default{
     components:{
@@ -43,21 +46,21 @@ export default{
             return this.$store.state.user
         }
     },
-    methods:{
+    methods: {
         login(){
-            this.$store.dispatch("login", this.payload)
+          this.$store.dispatch("login", this.payload)
+          alert("i was clicked")
         },
-        logedIn(){
-            alert("i was clicked")
-            
-        }
-    
     },
     beforeCreate(){
         this.$store.dispatch("fetchUsers")
-    }
+    },
+    created(){
 
-}
+    },
+  }
+
+
 
 </script>
 

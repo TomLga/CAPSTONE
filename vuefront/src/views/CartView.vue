@@ -22,8 +22,6 @@
             <td>{{ product.key.prodName }}</td>
           
             <td>{{ product.key.price }}</td>
-            <!-- <td><button @click="delProduct(product.key.prodID)">🗑️</button></td> -->
-            <!-- <button @click="removeFromCart(product.key.prodID)" class="remove-button">delete</button> -->
             <td>
         <button @click="confirmDelete(product.key.prodID)" class="remove-button">delete</button>
       </td>
@@ -50,7 +48,7 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      productQuantities: {}, // Add a new property to store product quantities
+      productQuantities: {}, 
     };
   },
   computed: {

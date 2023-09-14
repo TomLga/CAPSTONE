@@ -38,6 +38,9 @@
                     <a class="nav-link" href="/resgister">Register</a>
                   </li>             
                   <li class="nav-item">
+                    <a class="nav-link" href="/resgister">Logout</a>
+                  </li>             
+                  <li class="nav-item">
                     <a class="nav-link" href="/cart">cart</a>
                   </li>             
 
