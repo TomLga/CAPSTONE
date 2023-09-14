@@ -10,17 +10,21 @@
       </div>
     </div>
 
-    <div class="shopNowbtn">
-      <button>SHOP NOW</button> 
+    <div style="margin-top:20px" id="hiSlessonTxt">
+      <h1 style="background-color:rgba(0, 0, 0, 0.559); color: rgba(255, 255, 255, 0.685); margin-bottom: 20px;">FEATURED PRODUCTS</h1>
+      
     </div>
-
   <FeatureProd/>
 
  <div class="shopNowbtn">
-      <button style="margin:70px 0px;"> <a style="text-decoration: none; color:black"  href="/product">VIEW ALL PRODUCTS</a></button>
+      <!-- <button style="margin:70px 0px;"> <a style="text-decoration: none; color:black"  href="/productsView">VIEW ALL PRODUCTS</a></button> -->
+      <button style="margin:70px 0px;">  <a class="nav-link"  href="/product">VIEW ALL PRODUCTS</a> </button>
     </div>
 
-  <h1 style="background-color: rgba(0, 0, 0, 0.853); color:white; margin:auto; margin-bottom:20px">HISTORY LESSON OF THE DAY</h1>
+<div id="hiSlessonTxt">
+  <h1 style="background-color:rgba(0, 0, 0, 0.559); color: rgba(255, 255, 255, 0.685); margin-bottom: 20px;">HISTORY LESSON OF THE DAY</h1>
+  
+</div>
 
     <FtHistory/>
   </div>
@@ -96,6 +100,11 @@ h1{
   width: 100%;
   height: 100%;
   /* Additional animation-related styles */
+}
+
+#hiSlessonTxt{
+  width: 900px;
+  margin: auto;
 }
 </style>
 

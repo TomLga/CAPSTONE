@@ -12,10 +12,7 @@
                 <h3 class="card-title" style="color: white; text-decoration: underline; text-align: center">Saber</h3>
                 <p class="card-text cTextHome">The Saber sword, with origins in various cultures including Europe and the Middle East, is a curved, single-edged blade known for its effectiveness in cavalry charges and swift cutting motions. It was prominently used by cavalry forces for its slashing capabilities and became an iconic symbol of mounted warriors and military prowess.</p>
               </div>
-
-              <div>
-              <button class="btn btn-outline-primary viewMoreHome" style="background-color: ;" @click="viewItem(item.prodID)">VIEW MORE</button>
-            </div>
+              
 
             </div>
                       
@@ -25,16 +22,16 @@
         <div class="card ftCard">
            
             <div class="card-img-top img-fluid">
-                <img class="img-fluid" src="https://i.postimg.cc/qvZDZJWn/kanta-long-2.jpg"   style=" width:22rem; height:22rem; margin:8px 50px">
+                <img class="img-fluid" src="https://i.postimg.cc/qvZDZJWn/kanta-long-2.jpg"   style=" width:22rem; height:22rem; ">
             </div>
 
             <div class="card-body cbodyhome" >
               <h3 class="card-title" style="color: white; text-decoration:underline; text-align:center" >Japanse Kanta</h3>
               <p class="card-text cTextHome">The Japanese katana sword is an iconic weapon originating from Japan, characterized by its curved, single-edged blade and distinctive appearance. Traditionally used by samurai, the katana was renowned for its sharpness and cutting ability, symbolizing the warrior's honor and craftsmanship while serving as a symbol of status and skill.</p>
 
-              <div>
+              <!-- <div>
               <button class="btn btn-outline-primary viewMoreHome" style="background-color: ;" @click="viewItem(item.prodID)">VIEW MORE</button>
-            </div>
+            </div> -->
             </div>
             
             
@@ -44,16 +41,16 @@
         <div class="card ftCard">
            
             <div class="card-img-top img-fluid">
-                <img class="img-fluid" src="https://i.postimg.cc/yYjbcXPL/falcata-1.jpg"   style=" width:22rem; height:22rem; margin:10px auto;">
+                <img class="img-fluid" src="https://i.postimg.cc/yYjbcXPL/falcata-1.jpg"   style=" width:22rem; height:22rem;">
             </div>
 
             <div class="card-body cbodyhome">
               <h3 class="card-title" style="color: white; text-decoration:underline; text-align:center">Falcata</h3>
               <p class="card-text cTextHome">The falcata is a distinctive sword originating from the Iberian Peninsula, known for its single-edged curve near the tip and a convex edge on the inner side. It was primarily used by ancient Iberian warriors and is recognized for its effectiveness in close combat due to its slashing capabilities and unique design. A pre-Roman Iberian sword with a single-edged curve near the tip, combining aspects of single and double-edged designs.'
               </p>
-          <div>
+          <!-- <div>
               <button class="btn btn-outline-primary viewMoreHome" style="background-color: ;" @click="viewItem(item.prodID)">VIEW MORE</button>
-            </div>
+            </div> -->
             </div>
 
           </div>
@@ -61,17 +58,38 @@
     </div>
 </template>
 
-<script>
 
+
+
+<script>
+import SpinnerComp from '../components/SpinnerComp.vue';
 
 export default {
+  components: {
+    SpinnerComp,
+  },
+  data() {
+    return {
+      searchQuery: '',
+      priceSortOrder: 'asc', 
+      SelectedCategory: null,// Initialize the sorting order
+    };
+  },
   computed: {
-    item() {
-      return this.$store.state.signalView;
-    }
+    products() {
+    return this.$store.state.products || [];
+ 
   },
   methods: {
-  
+    searchProducts() {
+      // if (this.searchQuery) {
+      //   return this.searchBar()
+      // } else {
+      //   return this.products
+      // }
+     
+    },
+
     viewItem(prodID){
       const cProd = this.products.find(
         (item)=>
@@ -79,12 +97,37 @@ export default {
       );
       this.$store.commit("setSignalView", cProd);
       this.$router.push({name: "prodSingView", params:{ prodID:prodID}})
+    },
+
+
+  AddCart(item) {
+      const data = JSON.parse(localStorage.getItem('cart')) || []
+
+      const newData = {key: item}
+      data.push(newData)
+
+      localStorage.setItem('cart', JSON.stringify(data))
+    },
+    handleSortOption(event) {
+    const selectedSortOption = event.target.value;
+
+    if (selectedSortOption === 'name') {
+      this.sortABC();
+    } else if (selectedSortOption === 'priceLowToHigh') {
+      this.sortAmount('asc');
+    } else if (selectedSortOption === 'priceHighToLow') {
+      this.sortAmount('desc');
     }
+  },
+
+
+  },
+  mounted() {
+    this.$store.dispatch('fetchAllProducts');
+  },
   }
-}
-
+  }
 </script>
-
 
 
 

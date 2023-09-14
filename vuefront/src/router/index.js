@@ -85,6 +85,11 @@ const routes = [
     path: '/logout',
     name: 'logout',
     component:()=> import('../views/LoginView.vue')
+  },
+  {
+    path: '/productsView',
+    name: 'prodView',
+    component:()=> import('../views/ProductsView.vue')
   }
 
 ]
