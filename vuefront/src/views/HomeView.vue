@@ -11,7 +11,7 @@
     </div>
 
     <div class="hiSlessonTxt">
-  <p>FEATURED PRODUCTS</p>
+  <p>⚔️FEATURED PRODUCTS⚔️</p>
   </div>
 
   <FeatureProd/>
