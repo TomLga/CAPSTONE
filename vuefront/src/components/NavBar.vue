@@ -2,42 +2,57 @@
   <div>
     <nav>
         <ul class="navbar fixed-top navBarTop">
-            <li><a href="/">Home</a></li>
-            <li class="dropdown">
+          <a href="/"><img class="img-fluid logo" style="width: 6rem;" src="https://i.postimg.cc/T1Ckqjx3/White-Neon-Green-Game-Logo-removebg-preview-1.png" alt="" srcset=""></a>
+          
+          <router-link to="/" :class="{ active: $route.name === 'Home' }">Home</router-link>
+          <!-- <router-link to="/contact" :class="{ active: $route.name === 'contact' }">Conatct</router-link> -->
+
+            <!-- <li class="dropdown">
 
                 <a href="#">SHOP &#9662;</a>
                 <ul class="dropdown-content">
                     <li><a href="/product">Products</a></li>
                     <li><a href="/cart">Cart</a></li>
          
-                </ul>
-            </li>
+                  </li>
+                </ul> -->
 
-            <li class="dropdown">
-                <a href="#">About/Contact &#9662;</a>
+                <li><router-link to="/productsView" :class="{ active: $route.name === 'prodView' }">Shop</router-link></li>
+                
+                <li><router-link to="/history" :class="{ active: $route.name === 'history' }">History</router-link></li>
+                
+                <li class="dropdown">
+                  <router-link to="/about" :class="{ active: $route.name === 'about'}">About/Contact</router-link>
                 <ul class="dropdown-content">
-                    <li> <a href="/about">About</a></li>
-                    <li><a href="/contact">Contact Us</a></li>
+                  <li> <a href="/about">About</a></li>
+                  <li> <a href="/contact">Contact</a> </li>
                 </ul>
-            </li>
-            <li class="dropdown">
+              </li>
+
+              <li>
+                <router-link to="/cart" :class="{ active: $route.name === 'cart' }"> <i class="fa-solid fa-cart-shopping"></i></router-link>
+               
+              
+              
+              </li>
+
+
+            <li class="dropdown accDrop">
                 <a href="#">Account &#9662;</a>
                 <ul class="dropdown-content">
-                  <a href="/profile">
+                  <router-link to="/profile" :class="{ active: $route.name === 'profile'}">
             <img
               src="https://i.postimg.cc/ncxd04Nf/profile-circle-icon-2048x2048-cqe5466q.png"
               style="width: 3rem; background-color: antiquewhite; border-radius:100%;"
             />View
-          </a>
-                  <li><a href="/addNewUser">Register</a></li>
-                <li><a href="/resgister">Login</a></li>
-                <li><a href="/logout">Logout</a></li>
+                  </router-link>
+                  <li><router-link to="/addNewUser" :class="{ active: $route.name === 'addNewUser'}">Register</router-link></li>
+                <li> <router-link to="/resgister" :class="{ active: $route.name === 'resgister'}">Login</router-link></li>
+                <li> <router-link to="/logout" :class="{ active: $route.name === 'logout'}">logout</router-link></li>
                 </ul>
             </li>
 
 
-
-            
         </ul>
     </nav>
   </div>
@@ -50,7 +65,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  height: 80px;
+  height: 90px;
 }
 
 .nav-item:hover {
@@ -106,7 +121,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+
 }
 
 /* Style the navbar */
@@ -120,6 +135,7 @@ nav {
   padding: 0;
   margin: 0;
   display: flex;
+ 
 }
 
 .navbar li {
@@ -129,11 +145,15 @@ nav {
 .navbar a {
   text-decoration: none;
   color: #fff;
-
+  font-style: italic;
+}
+.navbar a:active{
+  color: crimson !important
 }
 
 /* Style the dropdown menu */
 .dropdown {
+
   position: relative;
   display: inline-block;
 }
@@ -171,9 +191,19 @@ nav {
     
   }
 }
+@media (max-width: 655px) {
+  .logo{
+    display: none;
+  }
+
+}
 
 .navbar a[href="/product"]:active {
   color: blue;
+}
+
+.accDrop a{
+  margin-right: 20px;
 }
 </style>
 

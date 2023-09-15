@@ -9,10 +9,13 @@
                 <button class="btn btn-outline-success" type="submit">Search</button>
               </form>
     
-            <h5>Products</h5>
-    
+              <div style="display: flex;">
+                <h3>Go back:</h3>
+           <button style="margin:0px 10px;"><a class="btn btn-contShopbtn" href="/admin">PRODUCT ADMIN</a></button> 
+
+              </div>
+           
             
-           <button><a class="nav-link" href="/admin">PRODUCT ADMIN</a></button> 
 
             <table class="table">
                 <thead>
@@ -57,8 +60,9 @@
 import SpinnerComp from '../components/SpinnerComp.vue';
 // import AddUser from '../components/AddUser.vue'
 
-import sweet from 'sweetalert';
+
 import axios from 'axios';
+import sweet from 'sweetalert2';
 
 
 export default {
@@ -89,20 +93,30 @@ export default {
   methods: {
     searchProducts() {
     },
-    delUser(userID){
-      console.log(userID);
+    async delUser(userID) {
+      const result = await sweet.fire({
+        title: 'Delete User',
+        text: 'Are you sure you want to delete this user?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete',
+        cancelButtonText: 'No, cancel',
+        confirmButtonColor: '#d33',
+      });
 
-      if(confirm('are you sure?')){
-      // console.log(prodID);
-      axios.delete(`https://capstoneswordall.onrender.com/user/${userID}`)
-      .then(res =>{
-        alert(res.data.msg)
-      
-
-
-      })
+      if (result.isConfirmed) {
+        axios.delete(`https://capstoneswordall.onrender.com/user/${userID}`)
+          .then(res => {
+            alert(res.data.msg);
+            window.location.reload();
+          
+          })
+          .catch(error => {
+            sweet.fire('Error', 'An error occurred while deleting the user.', 'error');
+          });
       }
-    }
+    },
+    
   },
   mounted() {
     console.log('Fetching users...');
@@ -121,5 +135,12 @@ export default {
 .searchTab >input{
   background: #bab5b5;
 }
+.btn-contShopbtn{
+  width: 200px;
+  height: 30px;
+}
+.btn-contShopbtn:hover{
+ box-shadow: 10px 10px 20px;
 
+}
 </style>

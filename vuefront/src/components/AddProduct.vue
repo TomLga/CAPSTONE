@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1 style="padding-top: 100px;">PROD MODULE</h1>
-    <button
+  
+    <button style="margin:10px;"
       id="addBtn"
       type="button"
       class="btn btn-primary"
@@ -124,6 +124,9 @@ export default {
 #addBtn{
     width: 100px;
     font-size: 10px;
+}
+#addBtn:hover{
+  box-shadow: 10px 0px 20px;
 }
 
 .wholeModal{

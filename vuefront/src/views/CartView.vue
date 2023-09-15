@@ -2,29 +2,46 @@
   <div class="bodyCart">
     <h1 style="margin-top: 100px;">Shopping Cart</h1>
     <div class="cart-container" v-if="cart.length > 0">
+
       <div class="product-list">
         <div class="product-item" v-for="product in cart" :key="product.prodID">
           <div class="product-info">
-            <div class="product-image">
-              <img style="width:10rem" :src="product.key.prodImg" alt="Product Image" />
-            </div>
             <div class="product-details">
+              <div class="product-image">
+                <img style="width:10rem" :src="product.key.prodImg" alt="Product Image" />
+              </div>
               <div class="product-name">{{ product.key.prodName }}</div>
-              <div class="product-quantity">Quantity: {{ product.key.qty }}</div>
-              <div class="product-price">Unit Price: ${{ product.key.price }}</div>
+              <div class="product-name">R{{ product.key.price }}</div>
+              <!-- <div class="product-quantity">In Stock: {{ product.key.qty }}</div>
+              <div class="product-price">Unit Price: ${{ product.key.price }}</div>  -->
+              <div class="product-actions">
+                <button @click="confirmDelete(product.key.prodID)" class="remove-button">Remove</button>
+              </div>
             </div>
           </div>
-          <div class="product-actions">
-            <button @click="confirmDelete(product.key.prodID)" class="remove-button">Delete</button>
-          </div>
+         
         </div>
       </div>
       <div class="cart-summary">
-        <div class="total-box">
-          <strong>TOTAL:</strong> ${{ total }}
+        <h3>CART SUMMARY</h3>
+        <div class="product-details" v-for="product in cart" :key="product.prodID">
+          <div class="product-name">{{ product.key.prodName }}</div>
+          <div class="product-quantity">In Stock: {{ product.key.qty }}</div>
+          <div class="product-price">Unit Price: ${{ product.key.price }}</div> 
+          <div class="product-actions">
+            <button @click="confirmDelete(product.key.prodID)" class="remove-button">Remove</button>
+          </div>
         </div>
         <div class="item-count-box">
           <strong>Products in Cart:</strong> {{ uniqueProductCount }}
+        </div>
+        <div class="total-box">
+          <strong>TOTAL:</strong> R{{ total }}
+        </div>
+
+        <div>
+          <button @click="checkout" class="btn" style="margin-top: 15px; width:150px; background-color: rgb(208, 109, 109);">
+            CHECKOUT</button>
         </div>
       </div>
     </div>
@@ -36,6 +53,7 @@
 
 <script>
 import axios from 'axios'
+import Swal from 'sweetalert2';
 export default {
   data() {
     return {
@@ -94,6 +112,28 @@ getProductQuantity(prodID) {
         this.removeFromCart(prodID);
       }},
 
+      checkout() {
+      Swal.fire({
+        title: 'Are you sure you want to checkout?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, checkout',
+        cancelButtonText: 'Cancel',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Display the "processing checkout" alert
+          alert('Processing checkout...');
+
+          // Clear the cart by setting it to an empty array
+          localStorage.setItem('cart', JSON.stringify([]));
+
+          // Refresh the page to reflect the updated cart state
+          location.reload();
+        }
+      });
+    },
+  },
+
     // Modify your existing method for deleting a product to reset its quantity
     delProduct(prodID) {
       console.log(prodID);
@@ -106,7 +146,7 @@ getProductQuantity(prodID) {
           });
       }
     },
-  },
+  
 };
 </script>
 
@@ -115,6 +155,7 @@ getProductQuantity(prodID) {
   display: flex;
   flex-direction: column;
   align-items: center;
+
 }
 
 .cart-container {
@@ -122,6 +163,7 @@ getProductQuantity(prodID) {
   justify-content: space-between;
   width: 80%;
   margin-top: 20px;
+  background: #535252;
 }
 
 .product-list {
@@ -133,9 +175,11 @@ getProductQuantity(prodID) {
 .total-box {
   margin-top: 20px;
   padding: 10px;
-  border: 1px solid #ddd;
-  text-align: right;
+  border: 1px solid #000000;
+  text-align: start;
   font-weight: bold;
+  width: 300px;
+  background: #f5f5f5;
 }
 
 .item-count-box {
@@ -144,22 +188,9 @@ getProductQuantity(prodID) {
 }
 
 /* Add your custom styles here */
-.cart-table {
-  margin-top: 20px;
-  border-collapse: collapse;
-  width: 100%;
-}
 
-.cart-table th,
-.cart-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-}
 
-.cart-table th {
-  background-color: #c7a4a4;
-}
+
 
 #checkout-heading {
   font-size: 24px;
@@ -173,8 +204,26 @@ getProductQuantity(prodID) {
   height: 50vh; /* Adjust the height as needed */
 }
 
-#emptyCart {
-  background: #000;
+
+
+
+
+ /* final style clean code thats not being used */
+.product-info{
+  display: flex;
+  margin-top: 15px;
+ 
 }
+ .product-details{
+   background: #cec8c8;
+   width: 300px;
+   margin: 5px;
+   padding: 5px;
+ }
+
+ .cart-summary{
+
+  width: 50%;
+ }
 
 </style>

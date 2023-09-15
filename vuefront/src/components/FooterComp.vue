@@ -1,9 +1,9 @@
 <template>
     <div class="footer">
-        <router-link id="linkAdmin" to="/admin">Admin</router-link>
-        <router-link to="/adminLogin">login</router-link>
+     
+        <router-link  style="text-decoration: none; color:white" to="/adminLogin">Login As Admin?</router-link>
         <div class="info">
-            <p> Copyright &copy; by LOGAN THOMAS </p>
+            <p> Copyright &copy; by LOGAN THOMAS {{ currentYear }}</p>
         </div>
 
         <div id="discord">
@@ -29,7 +29,13 @@
 import AdminLogin from '../components/AdminLogin'
 
 export default{
-    compputed:{
+    data() {
+    return {
+      currentYear: new Date().getFullYear(),
+    };
+  },
+
+    computed:{
         AdminLogin
     }
 }
