@@ -17,7 +17,8 @@
               <div class="product-actions">
                 <button @click="confirmDelete(product.key.prodID)" class="remove-button">Remove</button>
               </div>
-            </div>
+              
+            </div> 
           </div>
          
         </div>
