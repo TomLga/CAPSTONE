@@ -19,10 +19,6 @@
             <span>+27 067 627 3770</span>
         </p>
         </div>
-    
-         
-    
-
     </div>
 </template>
 <script>
@@ -39,8 +35,6 @@ export default{
         AdminLogin
     }
 }
-
-
 </script>
 
 

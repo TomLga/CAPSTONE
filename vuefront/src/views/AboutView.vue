@@ -9,12 +9,10 @@
         </div>
         
         <div class="col-md-8">
-
           <div class="card-body textHold">
             <div>
             <h5 class="card-title">About Sword Alliance: Forged in Heritage and Craftsmanship</h5>
-
-            <H4 class="invisbleText">WELOME TO: </H4>
+            <h4 class="invisbleText">WELOME TO: </h4>
             <h5 class="invisbleText">Sword Alliance: Forged in Heritage and Craftsmanship</h5>
             <h5 class="invisbleText">TOP SECRET: HOVER TO VIEW</h5>
             

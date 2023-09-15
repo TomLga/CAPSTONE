@@ -14,9 +14,6 @@
            <button style="margin:0px 10px;"><a class="btn btn-contShopbtn" href="/admin">PRODUCT ADMIN</a></button> 
 
               </div>
-           
-            
-
             <table class="table">
                 <thead>
                   <tr>
@@ -58,9 +55,6 @@
 
 <script>
 import SpinnerComp from '../components/SpinnerComp.vue';
-// import AddUser from '../components/AddUser.vue'
-
-
 import axios from 'axios';
 import sweet from 'sweetalert2';
 

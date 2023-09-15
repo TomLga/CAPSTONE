@@ -9,11 +9,7 @@
           <h5 style="color:white">GO TO:</h5>
           
           <button style="margin:0px 10px; width"><a class="btn btn-contShopbtn" href="/UserAdmin">USERS ADMIN</a></button> 
-
-
       <AddProduct/> 
-          
-
           <table class="table">
               <thead>
                 <tr>
@@ -40,18 +36,14 @@
                     <router-link :to="{path: '/product/' + item.prodID + '/edit'}" >
                     ✒️
                   </router-link>
-                  
-                    
-                    </td>
+                 </td>
                   <td>
-
                     <button @click="delProduct(item.prodID)">🗑️</button>
                     </td>
                   </tr>
                 </tbody>
                 <div v-else >
-
-                                    <H1 style="font-size: 30px; color:rgb(255, 255, 255)">loading please wait</H1>
+                   <H1 style="font-size: 30px; color:rgb(255, 255, 255)">loading please wait</H1>
               </div>
             </table>
           </div>

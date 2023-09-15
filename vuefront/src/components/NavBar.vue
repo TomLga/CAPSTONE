@@ -31,9 +31,6 @@
 
               <li>
                 <router-link to="/cart" :class="{ active: $route.name === 'cart' }"> <i class="fa-solid fa-cart-shopping"></i></router-link>
-               
-              
-              
               </li>
 
 
@@ -51,8 +48,6 @@
                 <li> <router-link to="/logout" :class="{ active: $route.name === 'logout'}">logout</router-link></li>
                 </ul>
             </li>
-
-
         </ul>
     </nav>
   </div>
@@ -117,7 +112,6 @@
   background-color: #555;
 }
 
-/* Reset some default styles */
 body {
   margin: 0;
   padding: 0;
@@ -178,11 +172,6 @@ nav {
 .navbar a:hover {
   color: #ff5733;
 }
-
-
-
-
-
 
 @media (max-width: 470px) {
   .navbar a {

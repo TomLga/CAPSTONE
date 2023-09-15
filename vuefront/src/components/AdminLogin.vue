@@ -9,7 +9,7 @@
             <img src="https://i.postimg.cc/fbVQ2FDF/5fcd23f8-02d4-4b85-bd99-92fe6ba4188a.jpg" style="width: 16rem;">
           </div>
           <div class="formContainer">
-            <h2>WELCOME BACK, </h2>
+            <h2>WELCOME BACK </h2>
             <form @submit.prevent="login">
               <input v-model="payload.emailAdd" name="emailAdd" type="email" placeholder="Email" required>
               <input v-model="payload.userPass" name="userPass" type="password" placeholder="Password" required>
@@ -71,11 +71,8 @@
       padding-top: 100px;
       color: white;
   }
-  
-  /*tok desgin*/
-  .login-Container{
-     
-    
+
+  .login-Container{   
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0px 0px 10px rgb(255, 255, 255);
@@ -122,7 +119,6 @@
   }
   
   .login-Container {
-      /* ... other styles ... */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -136,11 +132,11 @@
     
     .sideImgLogin {
       width: fit-content;
-      margin-right: 20px; /* Add some space between the image and the form */
+      margin-right: 20px;
     }
     
     .formContainer {
-      text-align: center; /* Center-align the form content */
+      text-align: center; 
     }
     #signSpan{
       color: #000000;

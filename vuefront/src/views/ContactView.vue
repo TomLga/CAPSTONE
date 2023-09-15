@@ -29,7 +29,7 @@
         </a>
         <a href="https://facebook.com" target="_blank">
           <i class="fab fa-facebook" style="color: #3d75d6;"></i> 
-          <!-- have a span for names -->
+        
         </a>
       </div>
 
@@ -72,8 +72,8 @@
     font-size: 25px;
     height: 100vh;
     display: flex;
-    justify-content: center; /* Center the content horizontally */
-    align-items: center; /* Center the content vertically */
+    justify-content: center; 
+    align-items: center; 
   }
   /* holder of inputs */
   .inputFields {
@@ -83,7 +83,6 @@
     
   }
 
-  /* spacing between labels and inputs */
   .inputFields label {
     display: block;
     margin-bottom: 10px;

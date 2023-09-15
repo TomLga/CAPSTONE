@@ -99,7 +99,7 @@ h1{
   left: 0;
   width: 100%;
   height: 100%;
-  /* Additional animation-related styles */
+
 }
 
 .hiSlessonTxt{
@@ -113,7 +113,7 @@ h1{
   text-align: center;
 }
 
-/* Media query for screens below 470px */
+
 @media (max-width: 470px) {
   .hiSlessonTxt p {
     font-size: 19px; 
@@ -122,17 +122,3 @@ h1{
   }
 }
 </style>
-
-
-
-
-<!-- 
-have the buttons work
-the pop over work (maybe) or have it go to the education 
-
-
-connnecting my github to my git bash i need to still downlaod node mods
-
-
-
- -->

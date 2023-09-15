@@ -27,7 +27,7 @@ export default createStore({
 
     token:null,
     msg:null
-    // category and spinner
+    // category and spinner?
   },
  
   mutations: {
@@ -40,10 +40,7 @@ export default createStore({
     setAddUser(state, data){
       state.addUser = data
     },
-    // updateProduct(state, product){
-    //   state.products = state.products.map(prod => prod.id === product.id ? product : prod)
-    // },
-   
+  // cart
     addToCart(state, product) {
       state.cartItems.push(product);
       localStorage.setItem("cart", JSON.stringify(state.cartItems)); // Save to localStorage
@@ -59,6 +56,7 @@ export default createStore({
       state.cartItems = state.cartItems.filter(product => product.key.prodID !== prodID);
       localStorage.setItem("cart", JSON.stringify(state.cartItems)); // Save to localStorage
     },
+    // products
     setProducts(state, products){
       state.products = products
     },
@@ -68,8 +66,6 @@ export default createStore({
     setSignalView(state, signalView){
       state.signalView =signalView
     },
-
-
     registerProduct (state, product){
       state.users.push(product)
     },
@@ -231,6 +227,9 @@ export default createStore({
         context.commit("setMsg", "An error occurred while adding the product");
       }
     },
+
+
+    
     // CRUD FUNCTIONS
     async addProduct(context, payload) {
       try {

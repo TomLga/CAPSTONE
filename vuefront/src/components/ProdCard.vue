@@ -1,48 +1,51 @@
 <template>
   <div>
     <form class="d-flex searchTab" role="search" @submit.prevent="searchProducts">
-      <input v-model="searchQuery" class="form-control me-2 barSearch" type="search" placeholder="Search" aria-label="Search">
+      <input v-model="searchQuery" class="form-control me-2 barSearch" type="search" placeholder="Search"
+        aria-label="Search">
       <button class="btn btn-outline-dark btnSearch" type="submit">Search</button>
     </form>
- 
-    <div id="optCategory">
-    <select class="filterButton" @change="filterByCategory">
-      <option value=""> filtered by WORLDWIDE 🌍</option>
-      <option value="Europe">Europe⚔️ </option>
-      <option value="Asia">Asia ⚔️</option>
-      <option value="Africa">Africa ⚔️</option>  
-    </select>
-    <div>
-  </div>
 
-    <div id="namePriceFilter">
-    <select class="filterName" @change="handleSortOption">
-      <option value="name"> filterd by Name..</option>
-      <option value="priceLowToHigh">Price Low to High</option>
-      <option value="priceHighToLow">Price High to Low</option>
-    
-    </select>
-  </div>
-  </div>
+    <div id="optCategory">
+      <select class="filterButton" @change="filterByCategory">
+        <option value=""> filtered by WORLDWIDE 🌍</option>
+        <option value="Europe">Europe⚔️ </option>
+        <option value="Asia">Asia ⚔️</option>
+        <option value="Africa">Africa ⚔️</option>
+      </select>
+      <div>
+      </div>
+
+      <div id="namePriceFilter">
+        <select class="filterName" @change="handleSortOption">
+          <option value="name"> filterd by Name..</option>
+          <option value="priceLowToHigh">Price Low to High</option>
+          <option value="priceHighToLow">Price High to Low</option>
+
+        </select>
+      </div>
+    </div>
 
     <div class="card-group prodCardBody">
 
       <div class="row" v-if="products && products.length > 0">
         <div class="col-md-6 col-lg-4" v-for="item in filteredProducts" :key="item.prodID">
-    
+
           <div class="card wholeCard">
-            <img :src="item.prodImg" class="card-img-top img-fluid" style="width: 22rem; height: 22rem; margin: 10px auto;">
+            <img :src="item.prodImg" class="card-img-top img-fluid"
+              style="width: 22rem; height: 22rem; margin: 10px auto;">
             <div class="card-body prodCards">
               <h2 class="card-title">{{ item.prodName }}</h2>
             </div>
 
             <div id="btncartmore">
               <button class="btn btn-outline-dark" @click="viewItem(item.prodID)">VIEW MORE</button>
-            
+
               <button @click="AddCart(item)" class="btn btn-outline-dark"> add
-                <img style="width: 1rem;" src="https://i.postimg.cc/Vkfvwcdf/cart-add-to-cart-icon-transparent-removebg-preview.png">        
+                <img style="width: 1rem;"
+                  src="https://i.postimg.cc/Vkfvwcdf/cart-add-to-cart-icon-transparent-removebg-preview.png">
               </button>
-             
+
             </div>
 
             <div class="card-footer">
@@ -51,10 +54,10 @@
           </div>
         </div>
       </div>
-      
-      <div v-else >
-        <SpinnerComp/>
-    </div>
+
+      <div v-else>
+        <SpinnerComp />
+      </div>
     </div>
   </div>
 </template>
@@ -71,7 +74,7 @@ export default {
   data() {
     return {
       searchQuery: '',
-      priceSortOrder: 'asc', 
+      priceSortOrder: 'asc',
       SelectedCategory: null, // Initialize the sorting order
     };
   },
@@ -86,7 +89,7 @@ export default {
       return this.products.filter(item => {
         const matchesSearch = item.prodName.toLowerCase().includes(searchQuery);
         const matchesCategory = !this.SelectedCategory || item.category === this.SelectedCategory;
-        
+
         return matchesSearch && matchesCategory;
       });
     },
@@ -99,14 +102,14 @@ export default {
       //   return this.products
       // }
     },
-   
+
     filterByCategory(event) {
-      // Get the selected category from the event target's value
+
       const selectedCategory = event.target.value;
       this.SelectedCategory = selectedCategory;
     },
     sortAmount(order) {
-      // Update the priceSortOrder based on the button clicked
+
       this.priceSortOrder = order;
 
       this.products.sort((a, b) => {
@@ -136,25 +139,25 @@ export default {
       });
     },
 
-    viewItem(prodID){
+    viewItem(prodID) {
       const cProd = this.products.find(
-        (item)=>
-        item.prodID === prodID
+        (item) =>
+          item.prodID === prodID
       );
       this.$store.commit("setSignalView", cProd);
-      this.$router.push({name: "prodSingView", params:{ prodID:prodID}})
+      this.$router.push({ name: "prodSingView", params: { prodID: prodID } })
     },
 
     AddCart(item) {
-      // Display the "Added to Cart" SweetAlert confirmation
+
       Swal.fire({
         title: 'Added to Cart',
         icon: 'success',
-        timer: 1500, // Adjust the timer duration as needed (in milliseconds)
+        timer: 1500,
         showConfirmButton: false,
       });
 
-      // Add the item to the cart as usual
+
       const data = JSON.parse(localStorage.getItem('cart')) || [];
       const newData = { key: item };
       data.push(newData);
@@ -181,7 +184,6 @@ export default {
 
 
 <style scoped>
-
 .wholeCard {
   /*background: #111010c5;*/
   background-color: rgba(45, 47, 47, 0.823);
@@ -190,52 +192,61 @@ export default {
   padding: 15px;
   max-width: 95%;
   box-shadow: 10px 10px 6px rgb(0, 0, 0);
-  border:3px solid black;
-  border-radius: 10px ;
+  border: 3px solid black;
+  border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
+
 #btncartmore {
   display: flex;
-  
+
   width: 300px;
-  margin: auto ;
+  margin: auto;
 
 }
-#btncartmore > button {
+
+#btncartmore>button {
   background: #aaa6a688;
- margin-left:4px;
+  margin-left: 4px;
 }
+
 .priceDiv {
   font-size: 20px;
 }
+
 /*hover effects*/
 img {
   transition: transform 1s ease-in-out, border 1s ease-in-out;
 }
+
 img:hover {
   transform: scale(1.2);
   border: 7px solid rgb(0, 0, 0);
   border-radius: 20px;
 }
+
 .searchTab {
   width: 50%;
   margin: auto;
   margin-bottom: 20px;
-  box-shadow: 20px 20px 20px ;
+  box-shadow: 20px 20px 20px;
 
 }
-.searchTab > input {
+
+.searchTab>input {
   background: #a6a4a4;
   color: white;
 }
+
 @media (max-width: 600px) {
   .wholeCard {
     width: 400px;
   }
+
   form {
     width: 100%;
   }
@@ -245,29 +256,30 @@ img:hover {
 
 
 /*new styles*/
-.btnSearch{
+.btnSearch {
   background: #d4cdcd58;
   width: 200px;
 }
 
-.btnSearch:hover{
+.btnSearch:hover {
   background: #ffffff81;
   color: black;
 }
 
 
-.filterButton,.filterName{
-  background:rgba(0, 0, 0, 0.449);
+.filterButton,
+.filterName {
+  background: rgba(0, 0, 0, 0.449);
   color: white;
   width: 240px;
   border-radius: 10px 0px 20px;
 }
+
 .filterName {
   background: rgba(0, 0, 0, 0.449);
   color: white;
   width: 240px;
   border-radius: 10px 0px 20px;
   margin-top: 10px;
-  /* Add margin to create space between the two dropdowns */
-}
-</style>
+
+}</style>

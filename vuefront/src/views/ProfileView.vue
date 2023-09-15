@@ -98,7 +98,7 @@ export default {
 .user-profile-image {
   margin-right: 20px;
   width: 20rem;
-  border-radius: 100%; /* Adjust this margin as needed */
+  border-radius: 100%;
 }
 
 .user-details {

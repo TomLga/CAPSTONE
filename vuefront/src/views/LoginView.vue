@@ -70,10 +70,7 @@ export default{
     color: white;
 }
 
-/*tok desgin*/
-.login-Container{
-   
-  
+.login-Container{  
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgb(255, 255, 255);
@@ -120,7 +117,7 @@ export default{
 }
 
 .login-Container {
-    /* ... other styles ... */
+   
     display: flex;
     justify-content: center;
     align-items: center;
@@ -134,11 +131,11 @@ export default{
   
   .sideImgLogin {
     width: fit-content;
-    margin-right: 20px; /* Add some space between the image and the form */
+    margin-right: 20px; 
   }
   
   .formContainer {
-    text-align: center; /* Center-align the form content */
+    text-align: center;
   }
   #signSpan{
     color: #000000;

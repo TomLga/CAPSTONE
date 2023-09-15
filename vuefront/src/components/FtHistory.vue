@@ -2,7 +2,6 @@
   <div>
     <div class="cardFtHistory mb-3">
       <div class="row g-0">
-        <!-- Display the image on larger screens -->
         <div class="col-md-4 d-md-block d-none">
           <img
             src="https://i.postimg.cc/wxX8GDY6/Sabre-Kilij-with-Scabbard-18th-Century.jpg"
@@ -43,29 +42,20 @@
               </Button>
             </p>
           </div>
-        </div>
-
-        <!-- Display the image on smaller screens -->
-        
+        </div>        
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import PopOver from '../components/PopOver.vue'
 
-export default {
-  components: {
-    PopOver
-  }
-}
 </script>
 
 <style>
 .cardFtHistory {
   margin: auto;
-  max-width: 930px; /* Adjust this to your desired maximum width */
+  max-width: 930px; 
   box-shadow: 10px 10px 20px rgb(43, 38, 38);
 }
 
@@ -101,7 +91,6 @@ export default {
   color: white;
 }
 
-/* Media query to make the image fluid on smaller screens */
 @media (max-width: 767px) {
   .img-fluid {
     max-width: 100%;

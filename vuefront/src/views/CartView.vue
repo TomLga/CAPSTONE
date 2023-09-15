@@ -67,14 +67,14 @@ export default {
       return cartData;
     },
     total() {
-      // Calculate the total price of items in the cart
+      // Calculate price in the cart
       if (this.cart) {
         return this.cart.reduce((acc, product) => acc + product.key.price, 0);
       }
       return 0;
     },
     itemCount() {
-      // Calculate the total number of items in the cart
+      // Calculate number of items in the cart
       if (this.cart) {
         return this.cart.reduce((acc, product) => acc + product.key.qty, 0);
       }
@@ -97,10 +97,8 @@ export default {
   this.$store.commit('removeFromCart', prodID); 
 },
 getProductQuantity(prodID) {
-      // Retrieve the quantity of a specific product
       return this.productQuantities[prodID] || 0;
     },
-    // Add a method to increase the product quantity when the "Add to Cart" button is clicked
     addToCart(prodID) {
       if (this.productQuantities[prodID]) {
         this.productQuantities[prodID]++;
@@ -122,27 +120,24 @@ getProductQuantity(prodID) {
         cancelButtonText: 'Cancel',
       }).then((result) => {
         if (result.isConfirmed) {
-          // Display the "processing checkout" alert
+   
           alert('Processing checkout...');
 
-          // Clear the cart by setting it to an empty array
           localStorage.setItem('cart', JSON.stringify([]));
-
-          // Refresh the page to reflect the updated cart state
           location.reload();
         }
       });
     },
   },
 
-    // Modify your existing method for deleting a product to reset its quantity
+  
     delProduct(prodID) {
       console.log(prodID);
       if (confirm('Are you sure?')) {
         axios.delete(`https://capstoneswordall.onrender.com/product/${prodID}`)
           .then(res => {
             alert(res.data.msg);
-            // Reset the product quantity to 0 when deleted
+            
             this.productQuantities[prodID] = 0;
           });
       }
@@ -188,11 +183,6 @@ getProductQuantity(prodID) {
   font-weight: bold;
 }
 
-/* Add your custom styles here */
-
-
-
-
 #checkout-heading {
   font-size: 24px;
   margin-top: 20px;
@@ -202,14 +192,14 @@ getProductQuantity(prodID) {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50vh; /* Adjust the height as needed */
+  height: 50vh; 
 }
 
 
 
 
 
- /* final style clean code thats not being used */
+ /* clean code thats not being used */
 .product-info{
   display: flex;
   margin-top: 15px;
@@ -223,7 +213,6 @@ getProductQuantity(prodID) {
  }
 
  .cart-summary{
-
   width: 50%;
  }
 

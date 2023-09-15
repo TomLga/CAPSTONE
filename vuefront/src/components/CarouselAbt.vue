@@ -25,7 +25,6 @@
         </div>
       </div>
 
-      <!-- Carousel controls -->
       <button id="btnB" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
@@ -57,19 +56,15 @@
   width: 2rem;
   height: 6rem;
  }
-
-
 .carousel-inner {
-  display: flex; /* Use flexbox to display images in a row */
-  flex-wrap: wrap; /* Allow images to wrap to the next line when needed */
+  display: flex; 
+  flex-wrap: wrap; 
   
 }
 .carImg{
   width: 15rem;
   height: 12rem;
 }
-
-
 #btnB {
   background: #000;
   margin: auto;
@@ -84,8 +79,8 @@
  }
  @media (max-width: 1146px) {
   .carImg {
-    width: 9rem; /* Adjust the size for smaller screens */
-    height: 6rem; /* Adjust the size for smaller screens */
+    width: 9rem; 
+    height: 6rem; 
   }
 }
 

@@ -1,6 +1,6 @@
 <template>
 
-
+<div>
   <h1 id="Sing">FORIGED BY GREAT</h1>
 <div class="container conSing text-center">
   <div class="row singConatiner" style="background-color:rgb(227, 224, 220)">
@@ -9,8 +9,6 @@
       <div>
         <img :src="item.prodImg" class="card-img-top img-fluid"  style=" width:22rem; height:22rem; margin:10px auto;">
         <div class="card-body prodCards">
-      
-         
         </div>
       </div>
     </div>
@@ -22,18 +20,20 @@
           {{ item.description }}
          </p>
          <div class="btnSing">
-          <button @click="AddCart(item)" class="btn btn-outline-primary"> add
-            <img style="width: 1rem;" src="https://i.postimg.cc/Vkfvwcdf/cart-add-to-cart-icon-transparent-removebg-preview.png">        
+          <button @click="AddCart(item)" class="btn btn-outline-primary"> add to cart 
+            <img  class="btn btn-outline-primary" style="width: 1rem;" src="https://i.postimg.cc/Vkfvwcdf/cart-add-to-cart-icon-transparent-removebg-preview.png">        
           </button> 
-        <button> <a class="btn btn-outline-primary" href="/product">MAIN PAGE</a></button>
+
+          <button class="btn btn-outline-primary">
+          <router-link to="/productsView">Back to Products</router-link>
+          </button>
+          
 
       </div>
          <p class="priceDiv"> R {{ item.price }}</p>
-
-        
     </div>
-  
   </div>
+</div>
 </div>
 
   </template>
@@ -79,7 +79,7 @@ export default {
   background: #e4e4e4;
   box-shadow: 10px 10px 50px rgb(0, 0, 0);
   margin-bottom: 50px;
-  height:56vh;
+  height:70vh;
 }
 .btnSing > button{
 margin-left: 20px;
@@ -89,4 +89,3 @@ margin-left: 20px;
 }
 
 </style>
-<!-- height:100vh; -->

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 style="padding-top: 100px;">YOUR'RE ON YOUR WAY!</h1>
+    <h1 style="padding-top: 100px;">YOU'RE ON YOUR WAY!</h1>
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -145,8 +145,8 @@ import axios from 'axios';
 
 .modal-content-container {
   display: flex;
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
+  align-items: center; 
+  justify-content: center; 
 }
 
 .image-container {
