@@ -50,7 +50,7 @@
       },
       methods: {
           login(){
-            this.$store.dispatch("login", this.payload)
+            this.$store.dispatch("Adminlogin", this.payload)
             alert("i was clicked")
           },
       },

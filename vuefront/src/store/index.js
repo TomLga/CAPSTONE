@@ -141,6 +141,35 @@ export default createStore({
         console.log(error);
       }
     }, 
+    async Adminlogin(context, payload) {
+      try {
+        const { msg, token, result } = (
+          await axios.post(`${fetchApi}login`, payload)
+        ).data;
+        if (result) {
+          context.commit("setUser", { result, msg });
+          cookies.set("AUser", { msg, token, result });
+          authUserInfo.applyToken(token); 
+  
+          sweet({
+            title: msg,
+            text: `Welcome back ${result?.firstName} ${result?.lastName}`,
+            icon: "success",
+            timer: 4000,
+          });
+          router.push({ name: "adminFace" });
+        } else {
+          sweet({
+            title: "Error",
+            text: msg,
+            icon: "error",
+            timer: 4000,
+          });
+        }
+      } catch (e) {
+        context.commit("setMsg", "An error has occured");
+      }
+    },
     async login(context, payload) {
       try {
         const { msg, token, result } = (
@@ -170,6 +199,7 @@ export default createStore({
         context.commit("setMsg", "An error has occured");
       }
     },
+    
     Logout(context){
     context.commit('setUser')
     cookies.remove("AUser")
@@ -236,20 +266,20 @@ export default createStore({
     },
 
       // updateProduct
-//       async updateProduct(context, payload) {
-//         try {
-//           const response = await axios.patch(`${fetchApi}product/${payload.id}`, payload);
-//           const { msg } = response.data;
+      async updateProduct(context, payload) {
+        try {
+          const response = await axios.patch(`${fetchApi}product/${payload.id}`, payload);
+          const { msg } = response.data;
     
-//           if (msg) {
-//             context.commit("setMsg", msg);
-//           } else {
-//             context.commit("updateProduct", payload, "Product updated successfully");
-//           }
-//         } catch (e) {
-//           context.commit("setMsg", "An error occurred while updating the product");
-//         }
-// },
+          if (msg) {
+            context.commit("setMsg", msg);
+          } else {
+            context.commit("updateProduct", payload, "Product updated successfully");
+          }
+        } catch (e) {
+          context.commit("setMsg", "An error occurred while updating the product");
+        }
+},  
   },
   modules: {
   }

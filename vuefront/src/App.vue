@@ -25,7 +25,8 @@ import FooterComp from './components/FooterComp'
 
 <style>
 nav a.router-link-exact-active {
-  color: #42b983;
+color: rgb(13, 223, 223);
+font-size: 23px;
 
 
 }

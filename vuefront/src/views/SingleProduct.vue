@@ -39,6 +39,7 @@
   </template>
 
 <script>
+import Swal from 'sweetalert2';
 export default {
   computed: {
     item() {
@@ -47,13 +48,20 @@ export default {
   },
   methods:{
     
-  AddCart(item) {
-      const data = JSON.parse(localStorage.getItem('cart')) || []
+    AddCart(item) {
+      // Display the "Added to Cart" SweetAlert confirmation
+      Swal.fire({
+        title: 'Added to Cart',
+        icon: 'success',
+        timer: 1500, // Adjust the timer duration as needed (in milliseconds)
+        showConfirmButton: false,
+      });
 
-      const newData = {key: item}
-      data.push(newData)
-
-      localStorage.setItem('cart', JSON.stringify(data))
+      // Add the item to the cart as usual
+      const data = JSON.parse(localStorage.getItem('cart')) || [];
+      const newData = { key: item };
+      data.push(newData);
+      localStorage.setItem('cart', JSON.stringify(data));
     },
 
 

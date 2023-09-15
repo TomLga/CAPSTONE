@@ -15,7 +15,13 @@ const routes = [
   {
     path: '/product',
     name: 'product',
-    component: () => import('../views/ProductsView.vue')
+    component: () => import('../views/ProductsView.vue'),
+    beforeEnter: () => {
+      if(!cookies.get("AUser")){
+        router.push({name:"login"})
+      }
+    }
+
   },
   {
     path: '/history',
@@ -87,15 +93,32 @@ const routes = [
     component:()=> import('../views/LoginView.vue')
   },
   {
+    path: '/login',
+    name: 'login',
+    component:()=> import('../views/LoginView.vue')
+  },
+  {
     path: '/productsView',
     name: 'prodView',
     component:()=> import('../views/ProductsView.vue')
   },
   {
+    path: '/adminFace',
+    name: 'adminFace',
+    component:()=> import('../components/AdminFace.vue')
+  },
+  {
     path: '/adminLogin',
     name: 'adminLogin',
-    component:()=> import('../components/AdminLogin.vue')
-  }
+    component:()=> import('../components/AdminLogin.vue'),
+  //   beforeEnter: () => {
+  //     if(cookies.get("AUser")){
+  //       router.push({name:"AdminLogin"})
+  //     }
+  //   }
+  },
+
+
 
 ]
 
