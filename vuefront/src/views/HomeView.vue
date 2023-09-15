@@ -10,21 +10,21 @@
       </div>
     </div>
 
-    <div style="margin-top:20px" id="hiSlessonTxt">
-      <h1 style="background-color:rgba(0, 0, 0, 0.559); color: rgba(255, 255, 255, 0.685); margin-bottom: 20px;">FEATURED PRODUCTS</h1>
-      
-    </div>
+    <div class="hiSlessonTxt">
+  <p>FEATURED PRODUCTS</p>
+  </div>
+
   <FeatureProd/>
 
  <div class="shopNowbtn">
       <!-- <button style="margin:70px 0px;"> <a style="text-decoration: none; color:black"  href="/productsView">VIEW ALL PRODUCTS</a></button> -->
-      <button style="margin:70px 0px;">  <a class="nav-link"  href="/product">VIEW ALL PRODUCTS</a> </button>
+      <button style="margin:10px 0px;">  <a class="nav-link"  href="/product">VIEW ALL PRODUCTS</a> </button>
     </div>
 
-<div id="hiSlessonTxt">
-  <h1 style="background-color:rgba(0, 0, 0, 0.559); color: rgba(255, 255, 255, 0.685); margin-bottom: 20px;">HISTORY LESSON OF THE DAY</h1>
-  
-</div>
+    <div class="hiSlessonTxt">
+  <p> HISTORY LESSON OF THE WEEK!</p>
+  </div>
+
 
     <FtHistory/>
   </div>
@@ -48,7 +48,7 @@ export default{
 </script>
 
 
-<style>
+<style >
 
 .imgDiv{
 background: #000;
@@ -102,9 +102,24 @@ h1{
   /* Additional animation-related styles */
 }
 
-#hiSlessonTxt{
-  width: 900px;
+.hiSlessonTxt{
   margin: auto;
+}
+.hiSlessonTxt > p{
+  background-color: rgba(0, 0, 0, 0.559);
+  color: rgba(255, 248, 248, 0.759);
+  margin: 10px 0px 20px;
+  font-size: 40px;
+  text-align: center;
+}
+
+/* Media query for screens below 470px */
+@media (max-width: 470px) {
+  .hiSlessonTxt p {
+    font-size: 19px; 
+    margin-bottom: 3px;
+    
+  }
 }
 </style>
 

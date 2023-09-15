@@ -1,82 +1,56 @@
 <template>
-    <div>
-        <nav class="navBarTop navbar navbar-expand-lg fixed-top ">
-            <div class="container-fluid">
-                
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
+  <div>
+    <nav>
+        <ul class="navbar fixed-top navBarTop">
+            <li><a href="/">Home</a></li>
+            <li class="dropdown">
 
-        <div class="proImg"> 
-  <a href="/profile">
-    <img src="https://i.postimg.cc/ncxd04Nf/profile-circle-icon-2048x2048-cqe5466q.png" style="width: 4rem;">
-  </a>
-</div>
-
-
-              <div class="navCenter  collapse navbar-collapse" id="navbarTogglerDemo01">
-                <img src="https://i.postimg.cc/T1Ckqjx3/White-Neon-Green-Game-Logo-removebg-preview-1.png" style="width: 7rem;">
-                
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link"  href="/product">Products</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/history">History</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/about">About</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/contact">Contact</a>
-                  </li>          
-                  <li class="nav-item">
-                    <a class="nav-link" href="/resgister">Register</a>
-                  </li>             
-                  <li class="nav-item">
-                    <a class="nav-link" href="/resgister">Logout</a>
-                  </li>             
-                  <li class="nav-item">
-                    <a class="nav-link" href="/cart">cart</a>
-                  </li>             
-
+                <a href="#">SHOP &#9662;</a>
+                <ul class="dropdown-content">
+                    <li><a href="/product">Products</a></li>
+                    <li><a href="/cart">Cart</a></li>
+         
                 </ul>
-                <form class="d-flex" role="search">
-                  <input id="btnSearch" class="form-control me-2" type="search" placeholder="SEARCH" aria-label="Search">
-                  <button class="btn btn-outline-primary" type="submit">Search</button>
-                </form>
-              </div>
+            </li>
 
-            </div>
-          </nav>
+            <li class="dropdown">
+                <a href="#">About/Contact &#9662;</a>
+                <ul class="dropdown-content">
+                    <li> <a href="/about">About</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Account &#9662;</a>
+                <ul class="dropdown-content">
+                  <a href="/profile">
+            <img
+              src="https://i.postimg.cc/ncxd04Nf/profile-circle-icon-2048x2048-cqe5466q.png"
+              style="width: 3rem; background-color: antiquewhite; border-radius:100%;"
+            />View
+          </a>
+                  <li><a href="/addNewUser">Register</a></li>
+                <li><a href="/resgister">Login</a></li>
+                <li><a href="/logout">Logout</a></li>
+                </ul>
+            </li>
 
-    </div>
+
+
+            
+        </ul>
+    </nav>
+  </div>
 </template>
 
-<script>
-    export default {
-        
-    }
-</script>
-
 <style>
-.navCenter{
-    margin-left: 490px;
-}
-
 .navBarTop {
-  background-image: url('https://i.postimg.cc/NjNLDHBp/298254-cut-sword-to-right-filter.jpg');
+  background-image: url("https://i.postimg.cc/NjNLDHBp/298254-cut-sword-to-right-filter.jpg");
   font-size: 20px;
-  position: fixed; 
-  top: 0; 
+  position: fixed;
+  top: 0;
   width: 100%;
   height: 80px;
-  
-
 }
 
 .nav-item:hover {
@@ -84,22 +58,122 @@
   text-decoration-color: rgb(147, 26, 26);
 }
 
-#btnSearch {
-  background: rgba(122, 113, 113, 0.397);
-  color: white;
-}
-
-
-.proImg{
-  background: white;
-  border-radius: 100%;
-}
-.proImg:hover{
+.proImg:hover {
   background: rgb(0, 153, 255);
 }
+
+/* drop down  */
+
+.nav {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #e90000;
+  list-style-type: none;
+  padding: 0;
+}
+
+.nav-item:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li {
+  margin: 0;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px;
+  color: #000000;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+  background-color: #555;
+}
+
+/* Reset some default styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Style the navbar */
+nav {
+  background-color: #333;
+  color: #fff;
+}
+
+.navbar {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.navbar li {
+  margin-right: 20px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #fff;
+
+}
+
+/* Style the dropdown menu */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdown-content li {
+  padding: 10px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+.navbar a:hover {
+  color: #ff5733;
+}
+
+
+
+
+
+
+@media (max-width: 470px) {
+  .navbar a {
+    font-size: 15px; 
+    margin-bottom: 3px;
+    
+  }
+}
+
+.navbar a[href="/product"]:active {
+  color: blue;
+}
 </style>
-
-
-
-
 

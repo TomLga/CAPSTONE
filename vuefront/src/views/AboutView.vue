@@ -57,7 +57,7 @@ components:{
 .abtCard{
   padding: 20px;
   margin:100px auto;
-  height: 545px;  
+  height:fit-content;  
   width: 95%;
   box-shadow: 15px 15px 20px rgb(0, 0, 0);
 }

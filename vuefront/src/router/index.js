@@ -90,6 +90,11 @@ const routes = [
     path: '/productsView',
     name: 'prodView',
     component:()=> import('../views/ProductsView.vue')
+  },
+  {
+    path: '/adminLogin',
+    name: 'adminLogin',
+    component:()=> import('../components/AdminLogin.vue')
   }
 
 ]

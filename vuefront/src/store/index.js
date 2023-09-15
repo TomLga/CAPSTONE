@@ -40,6 +40,9 @@ export default createStore({
     setAddUser(state, data){
       state.addUser = data
     },
+    // updateProduct(state, product){
+    //   state.products = state.products.map(prod => prod.id === product.id ? product : prod)
+    // },
    
     addToCart(state, product) {
       state.cartItems.push(product);
@@ -230,7 +233,23 @@ export default createStore({
       }
   
   
-    }
+    },
+
+      // updateProduct
+//       async updateProduct(context, payload) {
+//         try {
+//           const response = await axios.patch(`${fetchApi}product/${payload.id}`, payload);
+//           const { msg } = response.data;
+    
+//           if (msg) {
+//             context.commit("setMsg", msg);
+//           } else {
+//             context.commit("updateProduct", payload, "Product updated successfully");
+//           }
+//         } catch (e) {
+//           context.commit("setMsg", "An error occurred while updating the product");
+//         }
+// },
   },
   modules: {
   }

@@ -1,45 +1,36 @@
 <template>
   <div class="bodyCart">
     <h1 style="margin-top: 100px;">Shopping Cart</h1>
-    <div>
-
-      <table class="cart-table" v-if="cart">
-        <thead>
-          <tr>
-            <th>#ID</th>
-            <th>Product Image</th>
-            <th>Product Name</th>
-            <th>Quantity</th>
-            <th>Unit Price</th>
-            <th>remove</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="product in cart" :key="product.prodID">
-            <td>{{ product.key.prodID }}</td>
-            <td>{{ product.key.prodImg }}</td>
-            <td>{{ product.key.qty }}</td>
-            <td>{{ product.key.prodName }}</td>
-          
-            <td>{{ product.key.price }}</td>
-            <td>
-        <button @click="confirmDelete(product.key.prodID)" class="remove-button">delete</button>
-      </td>
-          </tr>
-        </tbody>
-      </table>
-      <div v-else class="empty-cart-container">
-        <img class="img-fluid" id="emptyCart" src="https://i.postimg.cc/NftSgm0G/empty-Shop-Cart-removebg-preview.png">
+    <div class="cart-container" v-if="cart.length > 0">
+      <div class="product-list">
+        <div class="product-item" v-for="product in cart" :key="product.prodID">
+          <div class="product-info">
+            <div class="product-image">
+              <img style="width:10rem" :src="product.key.prodImg" alt="Product Image" />
+            </div>
+            <div class="product-details">
+              <div class="product-name">{{ product.key.prodName }}</div>
+              <div class="product-quantity">Quantity: {{ product.key.qty }}</div>
+              <div class="product-price">Unit Price: ${{ product.key.price }}</div>
+            </div>
+          </div>
+          <div class="product-actions">
+            <button @click="confirmDelete(product.key.prodID)" class="remove-button">Delete</button>
+          </div>
+        </div>
+      </div>
+      <div class="cart-summary">
+        <div class="total-box">
+          <strong>TOTAL:</strong> ${{ total }}
+        </div>
+        <div class="item-count-box">
+          <strong>Products in Cart:</strong> {{ uniqueProductCount }}
+        </div>
       </div>
     </div>
-    <div class="total-box">
-        <strong>TOTAL:</strong> ${{ total }}
-      </div>
-      <div class="item-count-box">
-  <strong>U Products in Cart:</strong> {{ uniqueProductCount }}
-</div>
-
-
+    <div v-else class="empty-cart-container">
+      <img class="img-fluid" id="emptyCart" src="https://i.postimg.cc/NftSgm0G/empty-Shop-Cart-removebg-preview.png">
+    </div>
   </div>
 </template>
 
@@ -120,8 +111,24 @@ getProductQuantity(prodID) {
 </script>
 
 <style>
+.bodyCart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cart-container {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-top: 20px;
+}
+
+.product-list {
+  flex: 1;
+}
 .bodyCart{
-  height:82vh;
+  height:fit-content;
 } 
 .total-box {
   margin-top: 20px;

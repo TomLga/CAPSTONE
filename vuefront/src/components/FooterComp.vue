@@ -1,7 +1,7 @@
 <template>
     <div class="footer">
         <router-link id="linkAdmin" to="/admin">Admin</router-link>
-
+        <router-link to="/adminLogin">login</router-link>
         <div class="info">
             <p> Copyright &copy; by LOGAN THOMAS </p>
         </div>
@@ -25,6 +25,17 @@
 
     </div>
 </template>
+<script>
+import AdminLogin from '../components/AdminLogin'
+
+export default{
+    compputed:{
+        AdminLogin
+    }
+}
+
+
+</script>
 
 
 
@@ -36,6 +47,7 @@
     color: white;
     height: 135px;
     width: 100%;
+    
 }
 .info{
     text-align: center;
