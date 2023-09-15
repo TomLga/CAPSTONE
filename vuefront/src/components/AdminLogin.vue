@@ -51,7 +51,7 @@
       methods: {
           login(){
             this.$store.dispatch("Adminlogin", this.payload)
-            alert("i was clicked")
+            
           },
       },
       beforeCreate(){
