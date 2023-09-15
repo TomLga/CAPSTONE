@@ -1,6 +1,6 @@
 <template>
   <div class="bodyCart">
-    <h1 style="margin-top: 100px;">Shopping Cart</h1>
+    <h1 style="margin-top: 100px;">Shopping Cart⚔️</h1>
     <div class="cart-container" v-if="cart.length > 0">
 
       <div class="product-list">
