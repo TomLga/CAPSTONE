@@ -2,7 +2,7 @@
   <div>
 
     <div class="imgDiv">
-      <img class="img-fluid" id="landPic" src="https://i.postimg.cc/7YQHzNKY/mystical-warrior-in-armor-with-sword-l8zszwhe2legl7v4.jpg">
+      <img class="img-fluid" id="landPic" src="https://i.postimg.cc/dQ2WTkNJ/mystical-warrior-in-armor-with-sword-l8zszwhe2legl7v4.jpg">
       <div class="centerText">WELCOME TO SWORD ALLIANCE</div>
       <div class="sideAnimation">
         <SideAnimtion/>
